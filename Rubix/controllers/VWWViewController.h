@@ -1,13 +1,13 @@
 //
-//  RubixTests.h
-//  RubixTests
+//  VWWViewController.h
+//  rubix
 //
 //  Created by Zakk Hoyt on 11/12/12.
 //  Copyright (c) 2012 Zakk Hoyt. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <UIKit/UIKit.h>
 
-@interface RubixTests : SenTestCase
+@interface VWWViewController : UIViewController
 
 @end
