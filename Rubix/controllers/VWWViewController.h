@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VWWViewController : GLKViewController
 
+@interface VWWViewController : GLKViewController
+@property (nonatomic, retain) NSNumber* rotationRateX;
 @end

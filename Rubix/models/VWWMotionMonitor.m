@@ -110,12 +110,10 @@ const float kMagnetometerZMax = 30.0f;
         if(accelerometerData.acceleration.z > _devices.accelerometer.z.max){
             _devices.accelerometer.z.max = accelerometerData.acceleration.z;
         }
-        
-        if(self.delegate){
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate accelerometerUpdated:self.devices.accelerometer];});
-        }
+            [self.delegate vwwMotionMonitor:self accelerometerUpdated:self.devices.accelerometer];
+        });
     };
 
     [self.motion startAccelerometerUpdatesToQueue:accelerometerQueue withHandler:[[accelerometerHandler copy]autorelease]];
@@ -195,11 +193,9 @@ const float kMagnetometerZMax = 30.0f;
             _devices.magnetometer.z.max = magnetometerData.magneticField.z;
         }
         
-        if(self.delegate){
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate magnetometerUpdated:self.devices.magnetometer];});
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate vwwMotionMonitor:self magnetometerUpdated:self.devices.magnetometer];
+        });
     };
     
     [self.motion startMagnetometerUpdatesToQueue:magnetometerQueue withHandler:[[magnetometerHandler copy]autorelease]];
@@ -277,11 +273,9 @@ const float kMagnetometerZMax = 30.0f;
             _devices.gyro.z.max = gyroData.rotationRate.z;
         }
         
-        if(self.delegate){
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate gyroUpdated:self.devices.gyro];});
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate vwwMotionMonitor:self gyroUpdated:self.devices.gyro];
+        });
     };
     
     [self.motion startGyroUpdatesToQueue:gyroQueue withHandler:[[gyroHandler copy]autorelease]];

@@ -10,6 +10,7 @@
 #import <OpenGLES/ES2/gl.h>
 #import "VWWViewController.h"
 #import "VWWCube.h"
+#import "VWWMotionMonitor.h"
 
 
 
@@ -18,14 +19,26 @@ typedef struct {
     float Color[4];
 } Vertex;
 
-const Vertex Vertices[] = {
+const Vertex Vertices1[] = {
     {{1, -1, 0}, {1, 0, 0, 1}},
     {{1, 1, 0}, {0, 1, 0, 1}},
     {{-1, 1, 0}, {0, 0, 1, 1}},
     {{-1, -1, 0}, {0, 0, 0, 1}}
 };
 
-const GLubyte Indices[] = {
+const Vertex Vertices2[] = {
+    {{1, 1, 0}, {1, 0, 0, 1}},
+    {{1, 3, 0}, {0, 1, 0, 1}},
+    {{-1, 3, 0}, {0, 0, 1, 1}},
+    {{-1, 1, 0}, {0, 0, 0, 1}}
+};
+
+const GLubyte Indices1[] = {
+    0, 1, 2,
+    2, 3, 0
+};
+
+const GLubyte Indices2[] = {
     0, 1, 2,
     2, 3, 0
 };
@@ -33,15 +46,26 @@ const GLubyte Indices[] = {
 
 
 
-@interface VWWViewController () <GLKViewControllerDelegate>{
-    GLuint _vertexBuffer;
-    GLuint _indexBuffer;
-    float _rotation;
+@interface VWWViewController () <GLKViewControllerDelegate,
+    VWWMotionMonitorDelegate>{
+        GLuint _vertexBuffer;
+        GLuint _indexBuffer;
+        float _rotationX;
+        float _rotationY;
+        float _rotationZ;
+        float _translateX;
+        float _translateY;
+        float _translateZ;
+        float _colorX;
+        float _colorY;
+        float _colorZ;
+        
 }
 @property (nonatomic, retain) VWWCube* cube;
 @property (nonatomic, retain) EAGLContext * context;
 @property (nonatomic, retain) IBOutlet GLKView* view;
 @property (nonatomic, retain) GLKBaseEffect* effect;
+@property (nonatomic, retain) VWWMotionMonitor* motionMonitor;
 @end
 
 @implementation VWWViewController
@@ -49,34 +73,45 @@ const GLubyte Indices[] = {
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if(self){
+        [self initializeClass];
         [self createCube];
-//        [self createGLView];
     }
     return self;
 }
 
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     [self createGLView];    
     [self setupGL];
-    
+    [self.motionMonitor startAccelerometer];
+    [self.motionMonitor startGyros];
+    [self.motionMonitor startMagnetometer];
 }
 
+
 -(void)viewDidUnload{
+    [self.motionMonitor stopAccelerometer];
+    [self.motionMonitor stopGyros];
+    [self.motionMonitor stopMagnetometer];
     [super viewDidUnload];
     [self tearDownGL];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 
 #pragma mark - Custom methods
+
+-(void)initializeClass{
+    self.motionMonitor = [[VWWMotionMonitor alloc]init];
+    self.motionMonitor.delegate = self;
+    self.rotationRateX = @(0.25);
+}
+
 -(void)createCube{
     self.cube = [[VWWCube alloc]init];
 }
@@ -92,11 +127,11 @@ const GLubyte Indices[] = {
     
     glGenBuffers(1, &_vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices1), Vertices1, GL_STATIC_DRAW);
     
     glGenBuffers(1, &_indexBuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices1), Indices1, GL_STATIC_DRAW);
     
     self.effect = [[GLKBaseEffect alloc] init];
 }
@@ -117,7 +152,7 @@ const GLubyte Indices[] = {
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect{
 //    NSLog(@"%s", __FUNCTION__);
-    glClearColor(0.0, 0.0, 0.3, 1.0);
+    glClearColor(_colorX, _colorY, _colorZ, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     
     [self.effect prepareToDraw];
@@ -142,7 +177,7 @@ const GLubyte Indices[] = {
                           offsetof(Vertex, Color));
     
     glDrawElements(GL_TRIANGLES,
-                   sizeof(Indices)/sizeof(Indices[0]),
+                   sizeof(Indices1)/sizeof(Indices1[0]),
                    GL_UNSIGNED_BYTE,
                    0);
     
@@ -160,14 +195,45 @@ const GLubyte Indices[] = {
 }
 
 - (void)update{
-    NSLog(@"%s", __FUNCTION__);
+//    NSLog(@"%s", __FUNCTION__);
     float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
     GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 4.0f, 10.0f);
     self.effect.transform.projectionMatrix = projectionMatrix;
     
     GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -6.0f);
-    _rotation += self.timeSinceLastUpdate;
-    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(_rotation), 0, 0, 1);
+    
+
+    modelViewMatrix = GLKMatrix4Translate(modelViewMatrix, _translateX, _translateY, _translateZ);
+    
+    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(_rotationX), 1, 0, 0);
+    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(_rotationY), 0, 1, 0);
+    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(_rotationZ), 0, 0, 1);
+    
     self.effect.transform.modelviewMatrix = modelViewMatrix;
+  
+    
+
 }
+
+
+#pragma mark = Implements VWWMotionMonitorDelegate
+-(void)vwwMotionMonitor:(VWWMotionMonitor*)sender accelerometerUpdated:(MotionDevice)device{
+    //_rotation = 90 * device.x.current;
+    _translateX = device.x.current;
+    _translateY = device.y.current * 2.0;
+    _translateZ = device.z.current * 2.0;
+}
+-(void)vwwMotionMonitor:(VWWMotionMonitor*)sender magnetometerUpdated:(MotionDevice)device{
+    _colorX = abs(device.x.current)/40.0;
+    _colorY = abs(device.y.current)/40.0;
+    _colorZ = abs(device.z.current)/40.0;
+//    NSLog(@"%f", _colorX);
+}
+-(void)vwwMotionMonitor:(VWWMotionMonitor*)sender gyroUpdated:(MotionDevice)device{
+    //NSLog(@"x=%f y=%f z=%f", device.x.current, device.y.current, device.z.current);
+    _rotationX = 30 * device.x.current;
+    _rotationY = 30 * device.y.current;
+    _rotationZ = 30 * device.z.current;
+}
+
 @end
