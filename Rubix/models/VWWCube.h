@@ -5,6 +5,25 @@
 //  Created by Zakk Hoyt on 11/12/12.
 //  Copyright (c) 2012 Zakk Hoyt. All rights reserved.
 //
+//  This is a mostly C implementation for a rubix cube. A cube has 6 sides,
+//  each side has 9 squares. I took the approach of representing a face like:
+//  color[x][y], and then have 6 faces for the cube.
+//
+//  When a new cube is allocated it is in the solved state.
+//
+//  There are methods to manipulate the cube. There are 9 ways to rotate a cube,
+//  and each way can go in 2 directions. Picture the front of a cube. You can
+//  make the following rotations:
+//  Rotate column 1
+//  Rotate column 2
+//  Rotate column 3
+//  Rotate row 1
+//  Rotate row 2
+//  Rotate row 3
+//  You can also rotate that entire front face
+//  Next, the back face
+//  Also the middle "face"
+
 
 #import <Foundation/Foundation.h>
 
