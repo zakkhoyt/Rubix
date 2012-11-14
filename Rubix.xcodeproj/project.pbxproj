@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C6073BFC16533B1A00277649 /* VWWMotionMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C6073BFB16533B1A00277649 /* VWWMotionMonitor.m */; };
+		C6073BFF16533E1600277649 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6073BFE16533E1600277649 /* CoreMotion.framework */; };
 		C67866201653249100082C3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678661F1653249100082C3C /* UIKit.framework */; };
 		C67866221653249100082C3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866211653249100082C3C /* Foundation.framework */; };
 		C67866241653249100082C3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866231653249100082C3C /* CoreGraphics.framework */; };
@@ -29,7 +31,6 @@
 		C678666E1653272000082C3C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678666B1653272000082C3C /* OpenGLES.framework */; };
 		C678666F1653272000082C3C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678666C1653272000082C3C /* QuartzCore.framework */; };
 		C67866751653293800082C3C /* VWWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C67866741653293800082C3C /* VWWViewController.m */; };
-		C67866781653296F00082C3C /* VWWGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C67866771653296F00082C3C /* VWWGLViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C6073BFA16533B1A00277649 /* VWWMotionMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWMotionMonitor.h; path = models/VWWMotionMonitor.h; sourceTree = "<group>"; };
+		C6073BFB16533B1A00277649 /* VWWMotionMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWMotionMonitor.m; path = models/VWWMotionMonitor.m; sourceTree = "<group>"; };
+		C6073BFE16533E1600277649 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		C678661B1653249100082C3C /* Rubix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rubix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C678661F1653249100082C3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C67866211653249100082C3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -71,8 +75,6 @@
 		C678666C1653272000082C3C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C67866731653293800082C3C /* VWWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWViewController.h; path = controllers/VWWViewController.h; sourceTree = "<group>"; };
 		C67866741653293800082C3C /* VWWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWViewController.m; path = controllers/VWWViewController.m; sourceTree = "<group>"; };
-		C67866761653296F00082C3C /* VWWGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWGLViewController.h; path = controllers/VWWGLViewController.h; sourceTree = "<group>"; };
-		C67866771653296F00082C3C /* VWWGLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWGLViewController.m; path = controllers/VWWGLViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6073BFF16533E1600277649 /* CoreMotion.framework in Frameworks */,
 				C678666D1653272000082C3C /* GLKit.framework in Frameworks */,
 				C678666E1653272000082C3C /* OpenGLES.framework in Frameworks */,
 				C678666F1653272000082C3C /* QuartzCore.framework in Frameworks */,
@@ -124,6 +127,7 @@
 		C678661E1653249100082C3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C6073BFE16533E1600277649 /* CoreMotion.framework */,
 				C678666A1653272000082C3C /* GLKit.framework */,
 				C678666B1653272000082C3C /* OpenGLES.framework */,
 				C678666C1653272000082C3C /* QuartzCore.framework */,
@@ -187,6 +191,8 @@
 			children = (
 				C67866631653255B00082C3C /* VWWCube.h */,
 				C67866641653255B00082C3C /* VWWCube.m */,
+				C6073BFA16533B1A00277649 /* VWWMotionMonitor.h */,
+				C6073BFB16533B1A00277649 /* VWWMotionMonitor.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -196,8 +202,6 @@
 			children = (
 				C67866731653293800082C3C /* VWWViewController.h */,
 				C67866741653293800082C3C /* VWWViewController.m */,
-				C67866761653296F00082C3C /* VWWGLViewController.h */,
-				C67866771653296F00082C3C /* VWWGLViewController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -251,7 +255,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Zakk Hoyt";
 			};
-			buildConfigurationList = C67866151653249100082C3C /* Build configuration list for PBXProject "Rubix" */;
+			buildConfigurationList = C67866151653249100082C3C /* Build configuration list for PBXProject "rubix" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -318,7 +322,7 @@
 				C67866301653249100082C3C /* VWWAppDelegate.m in Sources */,
 				C67866651653255B00082C3C /* VWWCube.m in Sources */,
 				C67866751653293800082C3C /* VWWViewController.m in Sources */,
-				C67866781653296F00082C3C /* VWWGLViewController.m in Sources */,
+				C6073BFC16533B1A00277649 /* VWWMotionMonitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,10 +433,14 @@
 		C67866581653249100082C3C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (9ZVN82L8V9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zakk hoyt (9ZVN82L8V9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rubix/Rubix-Prefix.pch";
 				INFOPLIST_FILE = "Rubix/Rubix-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2A0E169D-D925-4F76-8E3F-6DA52A861AD8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2A0E169D-D925-4F76-8E3F-6DA52A861AD8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -440,10 +448,14 @@
 		C67866591653249100082C3C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (9ZVN82L8V9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zakk hoyt (9ZVN82L8V9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rubix/Rubix-Prefix.pch";
 				INFOPLIST_FILE = "Rubix/Rubix-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2A0E169D-D925-4F76-8E3F-6DA52A861AD8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2A0E169D-D925-4F76-8E3F-6DA52A861AD8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -485,7 +497,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C67866151653249100082C3C /* Build configuration list for PBXProject "Rubix" */ = {
+		C67866151653249100082C3C /* Build configuration list for PBXProject "rubix" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C67866551653249100082C3C /* Debug */,
@@ -501,6 +513,7 @@
 				C67866591653249100082C3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C678665A1653249100082C3C /* Build configuration list for PBXNativeTarget "RubixTests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +522,7 @@
 				C678665C1653249100082C3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

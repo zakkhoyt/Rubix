@@ -36,10 +36,12 @@ const GLubyte Indices[] = {
 @interface VWWViewController () <GLKViewDelegate>{
     GLuint _vertexBuffer;
     GLuint _indexBuffer;
+    float _rotation;
 }
 @property (nonatomic, retain) VWWCube* cube;
 @property (nonatomic, retain) EAGLContext * context;
-@property (nonatomic, retain) GLKView* glView;
+@property (nonatomic, retain) IBOutlet GLKView* view;
+@property (nonatomic, retain) GLKBaseEffect* effect;
 @end
 
 @implementation VWWViewController
@@ -48,7 +50,7 @@ const GLubyte Indices[] = {
     self = [super initWithCoder:aDecoder];
     if(self){
         [self createCube];
-
+//        [self createGLView];
     }
     return self;
 }
@@ -57,7 +59,7 @@ const GLubyte Indices[] = {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self createGLView];
+    [self createGLView];    
     [self setupGL];
     
 }
@@ -81,10 +83,8 @@ const GLubyte Indices[] = {
 
 -(void)createGLView{
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-    self.glView = [[GLKView alloc] initWithFrame:self.view.bounds];
-    self.glView.context = self.context;
-    self.glView.delegate = self;
-    [self.view addSubview:self.glView];
+    self.view.context = self.context;
+    self.view.delegate = self;
 }
 
 - (void)setupGL {
@@ -98,6 +98,7 @@ const GLubyte Indices[] = {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
     
+    self.effect = [[GLKBaseEffect alloc] init];
 }
 
 - (void)tearDownGL {
@@ -106,6 +107,8 @@ const GLubyte Indices[] = {
     
     glDeleteBuffers(1, &_vertexBuffer);
     glDeleteBuffers(1, &_indexBuffer);
+    
+    self.effect = [[GLKBaseEffect alloc] init];
     
 }
 
@@ -116,6 +119,18 @@ const GLubyte Indices[] = {
     glClearColor(0.0, 0.0, 0.3, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     
+    
+
+    [self.effect prepareToDraw];
+    
+    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
+    
+    glEnableVertexAttribArray(GLKVertexAttribPosition);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid *) offsetof(Vertex, Position));
+    glEnableVertexAttribArray(GLKVertexAttribColor);
+    glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid *) offsetof(Vertex, Color));
+    
     glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
     
 }
@@ -123,9 +138,23 @@ const GLubyte Indices[] = {
 #pragma mark - Implements GLKViewControllerDelegate
 - (void)glkViewController:(GLKViewController *)controller willPause:(BOOL)pause{
     
+    NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)glkViewControllerUpdate:(GLKViewController *)controller{
     
+    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)update{
+//    NSLog(@"%s", __FUNCTION__);
+    float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
+    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 4.0f, 10.0f);
+    self.effect.transform.projectionMatrix = projectionMatrix;
+    
+    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -6.0f);
+    _rotation += 90 * self.timeSinceLastUpdate;
+    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(_rotation), 0, 0, 1);
+    self.effect.transform.modelviewMatrix = modelViewMatrix;
 }
 @end
