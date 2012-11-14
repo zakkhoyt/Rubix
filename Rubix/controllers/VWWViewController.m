@@ -6,139 +6,66 @@
 //  Copyright (c) 2012 Zakk Hoyt. All rights reserved.
 //
 //  See tutorial here: http://www.raywenderlich.com/5235/beginning-opengl-es-2-0-with-glkit-part-2
+//  iOS6 book here: http://www.raywenderlich.com/store/ios-6-by-tutorials
 #import <GLKit/GLKit.h>
 #import <OpenGLES/ES2/gl.h>
 #import "VWWViewController.h"
 #import "VWWCube.h"
 #import "VWWMotionMonitor.h"
-
-
-
+\
 typedef struct {
     float Position[3];
     float Color[4];
+    float Normal[3];
 } Vertex;
 
-//const Vertex Vertices[] = {
-//    // square 0
-//    {{-1, 1, 0}, {1, 0, 0, 1}},
-//    {{-1, 3, 0}, {0, 1, 0, 1}},
-//    {{-3, 3, 0}, {0, 0, 1, 1}},
-//    {{-3, 1, 0}, {0, 0, 0, 1}},
-//    // square 1
-//    {{1, 1, 0}, {1, 0, 0, 1}},
-//    {{1, 3, 0}, {0, 1, 0, 1}},
-//    {{-1, 3, 0}, {0, 0, 1, 1}},
-//    {{-1, 1, 0}, {0, 0, 0, 1}},
-//    // square 2
-//    {{3, 1, 0}, {1, 0, 0, 1}},
-//    {{3, 3, 0}, {0, 1, 0, 1}},
-//    {{1, 3, 0}, {0, 0, 1, 1}},
-//    {{1, 1, 0}, {0, 0, 0, 1}},
-//    // square 3
-//    {{-1, -1, 0}, {1, 0, 0, 1}},
-//    {{-1, 1, 0}, {0, 1, 0, 1}},
-//    {{-3, 1, 0}, {0, 0, 1, 1}},
-//    {{-3, -1, 0}, {0, 0, 0, 1}},
-//    // square 4
-//    {{1, -1, 0}, {1, 0, 0, 1}},
-//    {{1, 1, 0}, {0, 1, 0, 1}},
-//    {{-1, 1, 0}, {0, 0, 1, 1}},
-//    {{-1, -1, 0}, {0, 0, 0, 1}},
-//    // square 5
-//    {{3, -1, 0}, {1, 0, 0, 1}},
-//    {{3, 1, 0}, {0, 1, 0, 1}},
-//    {{1, 1, 0}, {0, 0, 1, 1}},
-//    {{1, -1, 0}, {0, 0, 0, 1}},
-//    // square 6
-//    {{-1, -3, 0}, {1, 0, 0, 1}},
-//    {{-1, -1, 0}, {0, 1, 0, 1}},
-//    {{-3, -1, 0}, {0, 0, 1, 1}},
-//    {{-3, -3, 0}, {0, 0, 0, 1}},
-//    // square 7
-//    {{1, -3, 0}, {1, 0, 0, 1}},
-//    {{1, -1, 0}, {0, 1, 0, 1}},
-//    {{-1, -1, 0}, {0, 0, 1, 1}},
-//    {{-1, -3, 0}, {0, 0, 0, 1}},
-//    // square 8
-//    {{3, -3, 0}, {1, 0, 0, 1}},
-//    {{3, -1, 0}, {0, 1, 0, 1}},
-//    {{1, -1, 0}, {0, 0, 1, 1}},
-//    {{1, -3, 0}, {0, 0, 0, 1}},
-//};
-
-
-
 const Vertex Vertices[] = {
-
     // back
-    {{-1, -1, -1}, {1, 0, 0, 1}},
-    {{-1, 1, -1}, {0, 1, 0, 1}},
-    {{1, 1, -1}, {0, 0, 1, 1}},
-    {{1, -1, -1}, {0, 0, 0, 1}},
-//    // top
-//    {{1, 1, 1}, {1, 0, 0, 1}},
-//    {{-1, 1, 1}, {0, 1, 0, 1}},
-//    {{-1, 1, -1}, {0, 0, 1, 1}},
-//    {{1, 1, -1}, {0, 0, 0, 1}},
-//    // bottom
-//    {{1, -1, 1}, {1, 0, 0, 1}},
-//    {{-1, -1, 1}, {0, 1, 0, 1}},
-//    {{-1, -1, -1}, {0, 0, 1, 1}},
-//    {{1, -1, -1}, {0, 0, 0, 1}},
-//    // left
-//    {{-1, -1, -1}, {1, 0, 0, 1}},
-//    {{-1, -1, 1}, {0, 1, 0, 1}},
-//    {{-1, 1, 1}, {0, 0, 1, 1}},
-//    {{-1, 1, -1}, {0, 0, 0, 1}},
-//    // right
-//    {{1, -1, -1}, {1, 0, 0, 1}},
-//    {{1, 1, -1}, {0, 1, 0, 1}},
-//    {{1, 1, 1}, {0, 0, 1, 1}},
-//    {{1, -1, 1}, {0, 0, 0, 1}},
+    {{-1, -1, -1}, {1, 0, 0, 1}, {0, 0, -1}},
+    {{-1, 1, -1}, {0, 1, 0, 1}, {0, 0, -1}},
+    {{1, 1, -1}, {0, 0, 1, 1}, {0, 0, -1}},
+    {{1, -1, -1}, {0, 0, 0, 1}, {0, 0, -1}},
+    // top
+    {{1, 1, 1}, {1, 0, 0, 1}, {0, 1, 0}},
+    {{1, 1, -1}, {0, 1, 0, 1}, {0, 1, 0}},
+    {{-1, 1, -1}, {0, 0, 1, 1}, {0, 1, 0}},
+    {{-1, 1, 1}, {0, 0, 0, 1}, {0, 1, 0}},
+    // bottom
+    {{1, -1, 1}, {1, 0, 0, 1}, {0, -1, 0}},
+    {{-1, -1, 1}, {0, 1, 0, 1}, {0, -1, 0}},
+    {{-1, -1, -1}, {0, 0, 1, 1}, {0, -1, 0}},
+    {{1, -1, -1}, {0, 0, 0, 1}, {0, -1, 0}},
+    // left
+    {{-1, -1, -1}, {1, 0, 0, 1}, {-1, 0, 0}},
+    {{-1, -1, 1}, {0, 1, 0, 1}, {-1, 0, 0}},
+    {{-1, 1, 1}, {0, 0, 1, 1}, {-1, 0, 0}},
+    {{-1, 1, -1}, {0, 0, 0, 1}, {-1, 0, 0}},
+    // right
+    {{1, -1, -1}, {1, 0, 0, 1}, {1, 0, 0}},
+    {{1, 1, -1}, {0, 1, 0, 1}, {1, 0, 0}},
+    {{1, 1, 1}, {0, 0, 1, 1}, {1, 0, 0}},
+    {{1, -1, 1}, {0, 0, 0, 1}, {1, 0, 0}},
     // front
-    {{1, -1, 1}, {1, 0, 0, 1}},
-    {{1, 1, 1}, {0, 1, 0, 1}},
-    {{-1, 1, 1}, {0, 0, 1, 1}},
-    {{-1, -1, 1}, {0, 0, 0, 1}},
+    {{1, -1, 1}, {1, 0, 0, 1}, {0, 0, 1}},
+    {{1, 1, 1}, {0, 1, 0, 1}, {0, 0, 1}},
+    {{-1, 1, 1}, {0, 0, 1, 1}, {0, 0, 1}},
+    {{-1, -1, 1}, {0, 0, 0, 1}, {0, 0, 1}},
 };
 
-
-
-
-
+// Draw triangles with the data above
 const GLubyte Indices[] = {
-
     0, 1, 2,
     2, 3, 0,
-
     4, 5, 6,
     6, 7, 4,
-
     8, 9, 10,
     10, 11, 8,
-
     12, 13, 14,
     14, 15, 12,
-
     16, 17, 18,
     18, 19, 16,
-    
     20, 21, 22,
     22, 23, 20,
-    
-    
-    
-    
-//    // 6
-//    24, 25, 26,
-//    26, 27, 24,
-//    // 7
-//    28, 29, 30,
-//    30, 31, 28,
-//    // 8
-//    32, 33, 34,
-//    34, 35, 32,
 };
 
 
@@ -223,18 +150,6 @@ const GLubyte Indices[] = {
 }
 
 - (void)setupGL {
-//    [EAGLContext setCurrentContext:self.context];
-//    
-//    glGenBuffers(1, &_vertexBuffer);
-//    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
-//    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices0), Vertices0, GL_STATIC_DRAW);
-//    
-//    glGenBuffers(1, &_indexBuffer);
-//    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
-//    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices0), Indices0, GL_STATIC_DRAW);
-//    
-//    self.effect = [[GLKBaseEffect alloc] init];
-    
     [EAGLContext setCurrentContext:self.context];
     
     self.effect = [[GLKBaseEffect alloc] init];
@@ -259,18 +174,40 @@ const GLubyte Indices[] = {
                           sizeof(Vertex),
                           offsetof(Vertex, Position));
     glEnableVertexAttribArray(GLKVertexAttribColor);
-    
-    
     glVertexAttribPointer(GLKVertexAttribColor,
                           4,
                           GL_FLOAT,
                           GL_FALSE,
                           sizeof(Vertex),
-                          offsetof(Vertex, Color)
-                          );
+                          offsetof(Vertex, Color));
+    
+    glEnableVertexAttribArray(GLKVertexAttribNormal);
+    glVertexAttribPointer(GLKVertexAttribNormal,
+                          3,
+                          GL_FLOAT,
+                          GL_FALSE,
+                          sizeof(Vertex),
+                          (const GLvoid *)offsetof(Vertex, Normal));
+    
     
     glBindVertexArrayOES(0);
     
+    // Enable texture winding
+    glEnable(GL_CULL_FACE);
+    
+    // Setup a light (dont' forget the normals!)
+//    self.effect.light0.enabled = GL_TRUE;
+//    self.effect.light0.diffuseColor = GLKVector4Make(1, 1, 1, 1.0);
+//    self.effect.light0.position = GLKVector4Make(1, 1, 0, 1);
+    
+    self.effect.light0.enabled = GL_TRUE;
+//    self.effect.light0.diffuseColor = GLKVector4Make(0, 1, 1, 1);
+//    self.effect.light0.ambientColor = GLKVector4Make(0, 0, 0, 1);
+//    self.effect.light0.specularColor = GLKVector4Make(0, 0, 0, 1);
+//    self.effect.lightModelAmbientColor = GLKVector4Make(0, 0, 0, 1);
+//   self.effect.material.specularColor = GLKVector4Make(1, 1, 1, 1);
+    self.effect.light0.position = GLKVector4Make(0, 1.5, -5, 1);
+    self.effect.lightingType = GLKLightingTypePerPixel;
 }
 
 - (void)tearDownGL {
@@ -339,7 +276,7 @@ const GLubyte Indices[] = {
 - (void)update{
 //    NSLog(@"%s", __FUNCTION__);
     float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
-    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 4.0f, 10.0f);
+    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.0f, 20.0f);
     self.effect.transform.projectionMatrix = projectionMatrix;
     
     GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -6.0f);
@@ -354,27 +291,20 @@ const GLubyte Indices[] = {
 
 #pragma mark = Implements VWWMotionMonitorDelegate
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender accelerometerUpdated:(MotionDevice)device{
-//    _translateX = device.x.current;
-//    _translateY = device.y.current * 2.0;
-//    _translateZ = device.z.current * 2.0;
-    
-//    _rotationX = -300 * device.y.current;
-//    _rotationY = 300 * device.x.current;
-////    _rotationZ = 30 * device.z.current;
+    float accelerometerSensitivity = 2.0;
+    _translateX = accelerometerSensitivity * device.x.current;
+    _translateY = accelerometerSensitivity * device.y.current * 2.0;
+    _translateZ = accelerometerSensitivity * device.z.current * 2.0;
 }
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender magnetometerUpdated:(MotionDevice)device{
-    _colorX = abs(device.x.current)/40.0;
-    _colorY = abs(device.y.current)/40.0;
-    _colorZ = abs(device.z.current)/40.0;
-    
-    _rotationX = device.y.current;
-    _rotationY = device.x.current;
-    _rotationZ = device.z.current;
+    _colorX = abs(device.x.current)/400.0;
+    _colorY = abs(device.y.current)/400.0;
+    _colorZ = abs(device.z.current)/400.0;
 }
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender gyroUpdated:(MotionDevice)device{
-//    _rotationX = 30 * device.x.current;
-//    _rotationY = 30 * device.y.current;
-//    _rotationZ = 30 * device.z.current;
+    _rotationX = 30 * device.x.current;
+    _rotationY = 30 * device.y.current;
+    _rotationZ = 30 * device.z.current;
 }
 
 @end
