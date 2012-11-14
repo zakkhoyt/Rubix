@@ -33,7 +33,7 @@ const GLubyte Indices[] = {
 
 
 
-@interface VWWViewController () <GLKViewDelegate>{
+@interface VWWViewController () <GLKViewControllerDelegate>{
     GLuint _vertexBuffer;
     GLuint _indexBuffer;
     float _rotation;
@@ -116,22 +116,35 @@ const GLubyte Indices[] = {
 #pragma mark - Implements GLKViewDelegate
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect{
+//    NSLog(@"%s", __FUNCTION__);
     glClearColor(0.0, 0.0, 0.3, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     
-    
-
     [self.effect prepareToDraw];
     
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
     
     glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid *) offsetof(Vertex, Position));
+    glVertexAttribPointer(GLKVertexAttribPosition,
+                          3,
+                          GL_FLOAT,
+                          GL_FALSE,
+                          sizeof(Vertex),
+                          (const GLvoid *)offsetof(Vertex, Position));
     glEnableVertexAttribArray(GLKVertexAttribColor);
-    glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid *) offsetof(Vertex, Color));
+    glVertexAttribPointer(GLKVertexAttribColor,
+                          4,
+                          GL_FLOAT,
+                          GL_FALSE,
+                          sizeof(Vertex),
+                          (const GLvoid *)
+                          offsetof(Vertex, Color));
     
-    glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
+    glDrawElements(GL_TRIANGLES,
+                   sizeof(Indices)/sizeof(Indices[0]),
+                   GL_UNSIGNED_BYTE,
+                   0);
     
 }
 
@@ -147,13 +160,13 @@ const GLubyte Indices[] = {
 }
 
 - (void)update{
-//    NSLog(@"%s", __FUNCTION__);
+    NSLog(@"%s", __FUNCTION__);
     float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
     GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 4.0f, 10.0f);
     self.effect.transform.projectionMatrix = projectionMatrix;
     
     GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -6.0f);
-    _rotation += 90 * self.timeSinceLastUpdate;
+    _rotation += self.timeSinceLastUpdate;
     modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(_rotation), 0, 0, 1);
     self.effect.transform.modelviewMatrix = modelViewMatrix;
 }
