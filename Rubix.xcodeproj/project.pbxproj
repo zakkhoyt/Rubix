@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C67866201653249100082C3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678661F1653249100082C3C /* UIKit.framework */; };
+		C67866221653249100082C3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866211653249100082C3C /* Foundation.framework */; };
+		C67866241653249100082C3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866231653249100082C3C /* CoreGraphics.framework */; };
+		C678662A1653249100082C3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C67866281653249100082C3C /* InfoPlist.strings */; };
+		C678662C1653249100082C3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C678662B1653249100082C3C /* main.m */; };
+		C67866301653249100082C3C /* VWWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C678662F1653249100082C3C /* VWWAppDelegate.m */; };
+		C67866321653249100082C3C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C67866311653249100082C3C /* Default.png */; };
+		C67866341653249100082C3C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C67866331653249100082C3C /* Default@2x.png */; };
+		C67866361653249100082C3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C67866351653249100082C3C /* Default-568h@2x.png */; };
+		C67866391653249100082C3C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C67866371653249100082C3C /* MainStoryboard_iPhone.storyboard */; };
+		C678663C1653249100082C3C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C678663A1653249100082C3C /* MainStoryboard_iPad.storyboard */; };
+		C678663F1653249100082C3C /* VWWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C678663E1653249100082C3C /* VWWViewController.m */; };
+		C67866471653249100082C3C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866461653249100082C3C /* SenTestingKit.framework */; };
+		C67866481653249100082C3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678661F1653249100082C3C /* UIKit.framework */; };
+		C67866491653249100082C3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866211653249100082C3C /* Foundation.framework */; };
+		C67866511653249100082C3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C678664F1653249100082C3C /* InfoPlist.strings */; };
+		C67866541653249100082C3C /* RubixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C67866531653249100082C3C /* RubixTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C678664A1653249100082C3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C67866121653249100082C3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C678661A1653249100082C3C;
+			remoteInfo = Rubix;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C678661B1653249100082C3C /* Rubix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rubix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C678661F1653249100082C3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C67866211653249100082C3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C67866231653249100082C3C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C67866271653249100082C3C /* Rubix-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rubix-Info.plist"; sourceTree = "<group>"; };
+		C67866291653249100082C3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C678662B1653249100082C3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C678662D1653249100082C3C /* Rubix-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rubix-Prefix.pch"; sourceTree = "<group>"; };
+		C678662E1653249100082C3C /* VWWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWWAppDelegate.h; sourceTree = "<group>"; };
+		C678662F1653249100082C3C /* VWWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWWAppDelegate.m; sourceTree = "<group>"; };
+		C67866311653249100082C3C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		C67866331653249100082C3C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		C67866351653249100082C3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		C67866381653249100082C3C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		C678663B1653249100082C3C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		C678663D1653249100082C3C /* VWWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWWViewController.h; sourceTree = "<group>"; };
+		C678663E1653249100082C3C /* VWWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWWViewController.m; sourceTree = "<group>"; };
+		C67866451653249100082C3C /* RubixTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RubixTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C67866461653249100082C3C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		C678664E1653249100082C3C /* RubixTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RubixTests-Info.plist"; sourceTree = "<group>"; };
+		C67866501653249100082C3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C67866521653249100082C3C /* RubixTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RubixTests.h; sourceTree = "<group>"; };
+		C67866531653249100082C3C /* RubixTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RubixTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C67866181653249100082C3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C67866201653249100082C3C /* UIKit.framework in Frameworks */,
+				C67866221653249100082C3C /* Foundation.framework in Frameworks */,
+				C67866241653249100082C3C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C67866411653249100082C3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C67866471653249100082C3C /* SenTestingKit.framework in Frameworks */,
+				C67866481653249100082C3C /* UIKit.framework in Frameworks */,
+				C67866491653249100082C3C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C67866101653249100082C3C = {
+			isa = PBXGroup;
+			children = (
+				C67866251653249100082C3C /* Rubix */,
+				C678664C1653249100082C3C /* RubixTests */,
+				C678661E1653249100082C3C /* Frameworks */,
+				C678661C1653249100082C3C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C678661C1653249100082C3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C678661B1653249100082C3C /* Rubix.app */,
+				C67866451653249100082C3C /* RubixTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C678661E1653249100082C3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C678661F1653249100082C3C /* UIKit.framework */,
+				C67866211653249100082C3C /* Foundation.framework */,
+				C67866231653249100082C3C /* CoreGraphics.framework */,
+				C67866461653249100082C3C /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C67866251653249100082C3C /* Rubix */ = {
+			isa = PBXGroup;
+			children = (
+				C678662E1653249100082C3C /* VWWAppDelegate.h */,
+				C678662F1653249100082C3C /* VWWAppDelegate.m */,
+				C67866371653249100082C3C /* MainStoryboard_iPhone.storyboard */,
+				C678663A1653249100082C3C /* MainStoryboard_iPad.storyboard */,
+				C678663D1653249100082C3C /* VWWViewController.h */,
+				C678663E1653249100082C3C /* VWWViewController.m */,
+				C67866261653249100082C3C /* Supporting Files */,
+			);
+			path = Rubix;
+			sourceTree = "<group>";
+		};
+		C67866261653249100082C3C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C67866271653249100082C3C /* Rubix-Info.plist */,
+				C67866281653249100082C3C /* InfoPlist.strings */,
+				C678662B1653249100082C3C /* main.m */,
+				C678662D1653249100082C3C /* Rubix-Prefix.pch */,
+				C67866311653249100082C3C /* Default.png */,
+				C67866331653249100082C3C /* Default@2x.png */,
+				C67866351653249100082C3C /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C678664C1653249100082C3C /* RubixTests */ = {
+			isa = PBXGroup;
+			children = (
+				C67866521653249100082C3C /* RubixTests.h */,
+				C67866531653249100082C3C /* RubixTests.m */,
+				C678664D1653249100082C3C /* Supporting Files */,
+			);
+			path = RubixTests;
+			sourceTree = "<group>";
+		};
+		C678664D1653249100082C3C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C678664E1653249100082C3C /* RubixTests-Info.plist */,
+				C678664F1653249100082C3C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C678661A1653249100082C3C /* Rubix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C67866571653249100082C3C /* Build configuration list for PBXNativeTarget "Rubix" */;
+			buildPhases = (
+				C67866171653249100082C3C /* Sources */,
+				C67866181653249100082C3C /* Frameworks */,
+				C67866191653249100082C3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Rubix;
+			productName = Rubix;
+			productReference = C678661B1653249100082C3C /* Rubix.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C67866441653249100082C3C /* RubixTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C678665A1653249100082C3C /* Build configuration list for PBXNativeTarget "RubixTests" */;
+			buildPhases = (
+				C67866401653249100082C3C /* Sources */,
+				C67866411653249100082C3C /* Frameworks */,
+				C67866421653249100082C3C /* Resources */,
+				C67866431653249100082C3C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C678664B1653249100082C3C /* PBXTargetDependency */,
+			);
+			name = RubixTests;
+			productName = RubixTests;
+			productReference = C67866451653249100082C3C /* RubixTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C67866121653249100082C3C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = VWW;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Zakk Hoyt";
+			};
+			buildConfigurationList = C67866151653249100082C3C /* Build configuration list for PBXProject "Rubix" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C67866101653249100082C3C;
+			productRefGroup = C678661C1653249100082C3C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C678661A1653249100082C3C /* Rubix */,
+				C67866441653249100082C3C /* RubixTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C67866191653249100082C3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C678662A1653249100082C3C /* InfoPlist.strings in Resources */,
+				C67866321653249100082C3C /* Default.png in Resources */,
+				C67866341653249100082C3C /* Default@2x.png in Resources */,
+				C67866361653249100082C3C /* Default-568h@2x.png in Resources */,
+				C67866391653249100082C3C /* MainStoryboard_iPhone.storyboard in Resources */,
+				C678663C1653249100082C3C /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C67866421653249100082C3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C67866511653249100082C3C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C67866431653249100082C3C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C67866171653249100082C3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C678662C1653249100082C3C /* main.m in Sources */,
+				C67866301653249100082C3C /* VWWAppDelegate.m in Sources */,
+				C678663F1653249100082C3C /* VWWViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C67866401653249100082C3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C67866541653249100082C3C /* RubixTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C678664B1653249100082C3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C678661A1653249100082C3C /* Rubix */;
+			targetProxy = C678664A1653249100082C3C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C67866281653249100082C3C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C67866291653249100082C3C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C67866371653249100082C3C /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C67866381653249100082C3C /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		C678663A1653249100082C3C /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C678663B1653249100082C3C /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		C678664F1653249100082C3C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C67866501653249100082C3C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C67866551653249100082C3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C67866561653249100082C3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C67866581653249100082C3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Rubix/Rubix-Prefix.pch";
+				INFOPLIST_FILE = "Rubix/Rubix-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C67866591653249100082C3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Rubix/Rubix-Prefix.pch";
+				INFOPLIST_FILE = "Rubix/Rubix-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C678665B1653249100082C3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Rubix.app/Rubix";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Rubix/Rubix-Prefix.pch";
+				INFOPLIST_FILE = "RubixTests/RubixTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		C678665C1653249100082C3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Rubix.app/Rubix";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Rubix/Rubix-Prefix.pch";
+				INFOPLIST_FILE = "RubixTests/RubixTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C67866151653249100082C3C /* Build configuration list for PBXProject "Rubix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C67866551653249100082C3C /* Debug */,
+				C67866561653249100082C3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C67866571653249100082C3C /* Build configuration list for PBXNativeTarget "Rubix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C67866581653249100082C3C /* Debug */,
+				C67866591653249100082C3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C678665A1653249100082C3C /* Build configuration list for PBXNativeTarget "RubixTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C678665B1653249100082C3C /* Debug */,
+				C678665C1653249100082C3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C67866121653249100082C3C /* Project object */;
+}
