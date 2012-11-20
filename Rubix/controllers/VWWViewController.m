@@ -312,12 +312,12 @@ const CGFloat kRotateZSensitivity = 0.25f;
     GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.0f, 50.0f);
     self.effect.transform.projectionMatrix = projectionMatrix;
     
-    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -16.0f);
+    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, self.translateZ - 6.0);
     modelViewMatrix = GLKMatrix4Translate(modelViewMatrix, _translateX, _translateY, _translateZ);
     modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(self.rotateY), 1, 0, 0);
     modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(self.rotateX), 0, 1, 0);
     modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(self.rotateZ), 0, 0, 1);
-    modelViewMatrix = GLKMatrix4Translate(modelViewMatrix, 0, 0, self.translateZ);
+//    modelViewMatrix = GLKMatrix4Translate(modelViewMatrix, 0, 0, self.translateZ);
     
     self.effect.transform.modelviewMatrix = modelViewMatrix;
 }
@@ -326,7 +326,7 @@ const CGFloat kRotateZSensitivity = 0.25f;
 #pragma mark = Implements VWWMotionMonitorDelegate
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender accelerometerUpdated:(MotionDevice)device{
  //   NSLog(@"%@", [self.motionMonitor description:device]);
-    self.translateZ = device.z.current * 10;
+    self.translateZ = device.z.current * 2;
 }
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender magnetometerUpdated:(MotionDevice)device{
 }
