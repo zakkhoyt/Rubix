@@ -7,6 +7,7 @@
 //
 //  See tutorial here: http://www.raywenderlich.com/5235/beginning-opengl-es-2-0-with-glkit-part-2
 //  iOS6 book here: http://www.raywenderlich.com/store/ios-6-by-tutorials
+//  Matrix info here: http://casualdistractiongames.wordpress.com/
 
 #define VWW_GL_ENABLE_TEXTURES 1
 //#define VWW_GL_ENABLE_LIGHTING 1
@@ -15,85 +16,22 @@
 
 #import <GLKit/GLKit.h>
 #import <OpenGLES/ES2/gl.h>
+#import "VWWCubeArrays.h"
 #import "VWWViewController.h"
 #import "VWWCube.h"
 #import "VWWMotionMonitor.h"
 
-const CGFloat kRotateXSensitivity = 1.25f;
+const CGFloat kRotateXSensitivity = 0.25f;
 const CGFloat kRotateYSensitivity = 0.25f;
 const CGFloat kRotateZSensitivity = 0.25f;
 
-
-typedef struct {
-    float Position[3];
-    float Color[4];
-    float TexCoord[2];
-    float Normal[3];
-} Vertex;
-
-const Vertex Vertices[] = {
-    // Front
-    {{1, -1, 1}, {1, 0, 0, 1}, {1, 0}, {0, 0, 1}},
-    {{1, 1, 1}, {0, 1, 0, 1}, {1, 1}, {0, 0, 1}},
-    {{-1, 1, 1}, {0, 0, 1, 1}, {0, 1}, {0, 0, 1}},
-    {{-1, -1, 1}, {0, 0, 0, 1}, {0, 0}, {0, 0, 1}},
-    // Back
-    {{1, 1, -1}, {1, 0, 0, 1}, {0, 1}, {0, 0, -1}},
-    {{-1, -1, -1}, {0, 1, 0, 1}, {1, 0}, {0, 0, -1}},
-    {{1, -1, -1}, {0, 0, 1, 1}, {0, 0}, {0, 0, -1}},
-    {{-1, 1, -1}, {0, 0, 0, 1}, {1, 1}, {0, 0, -1}},
-    // Left
-    {{-1, -1, 1}, {1, 0, 0, 1}, {1, 0}, {-1, 0, 0}},
-    {{-1, 1, 1}, {0, 1, 0, 1}, {1, 1}, {-1, 0, 0}},
-    {{-1, 1, -1}, {0, 0, 1, 1}, {0, 1}, {-1, 0, 0}},
-    {{-1, -1, -1}, {0, 0, 0, 1}, {0, 0}, {-1, 0, 0}},
-    // Right
-    {{1, -1, -1}, {1, 0, 0, 1}, {1, 0}, {1, 0, 0}},
-    {{1, 1, -1}, {0, 1, 0, 1}, {1, 1}, {1, 0, 0}},
-    {{1, 1, 1}, {0, 0, 1, 1}, {0, 1}, {1, 0, 0}},
-    {{1, -1, 1}, {0, 0, 0, 1}, {0, 0}, {1, 0, 0}},
-    // Top
-    {{1, 1, 1}, {1, 0, 0, 1}, {1, 0}, {0, 1, 0}},
-    {{1, 1, -1}, {0, 1, 0, 1}, {1, 1}, {0, 1, 0}},
-    {{-1, 1, -1}, {0, 0, 1, 1}, {0, 1}, {0, 1, 0}},
-    {{-1, 1, 1}, {0, 0, 0, 1}, {0, 0}, {0, 1, 0}},
-    // Bottom
-    {{1, -1, -1}, {1, 0, 0, 1}, {1, 0}, {0, -1, 0}},
-    {{1, -1, 1}, {0, 1, 0, 1}, {1, 1}, {0, -1, 0}},
-    {{-1, -1, 1}, {0, 0, 1, 1}, {0, 1}, {0, -1, 0}},
-    {{-1, -1, -1}, {0, 0, 0, 1}, {0, 0}, {0, -1, 0}}
-};
-const GLubyte Indices[] = {
-    // Front
-    0, 1, 2,
-    2, 3, 0,
-    // Back
-    4, 6, 5,
-    4, 5, 7,
-    // Left
-    8, 9, 10,
-    10, 11, 8,
-    // Right
-    12, 13, 14,
-    14, 15, 12,
-    // Top
-    16, 17, 18,
-    18, 19, 16,
-    // Bottom
-    20, 21, 22,
-    22, 23, 20
-};
-    
-    
-    
 @interface VWWViewController () <GLKViewControllerDelegate,
     VWWMotionMonitorDelegate>{
-
 }
-
 @property (nonatomic) GLuint vertexArray;
 @property (nonatomic) GLuint vertexBuffer;
 @property (nonatomic) GLuint indexBuffer;
+//@property (nonatomic) GLKMatrixStackRef modelview_stack;
 @property (nonatomic, retain) VWWCube* cube;
 @property (nonatomic, retain) EAGLContext * context;
 @property (nonatomic, retain) IBOutlet GLKView* view;
@@ -197,9 +135,7 @@ const GLubyte Indices[] = {
 -(void)initializeClass{
     self.motionMonitor = [[VWWMotionMonitor alloc]init];
     self.motionMonitor.delegate = self;
-    self.rotationRateX = @(0.25);
-    
-    self.rotateTimer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(rotateTimerFire) userInfo:nil repeats:YES];
+    //self.rotateTimer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(rotateTimerFire) userInfo:nil repeats:YES];
 }
 
 -(void)createCube{
@@ -214,9 +150,10 @@ const GLubyte Indices[] = {
     self.view.drawableDepthFormat = GLKViewDrawableDepthFormat16;       // probably need this for 3D
 }
 
+#pragma mark - OpenGLES stuff
+
 - (void)setupGL {
     [EAGLContext setCurrentContext:self.context];
-    
     self.effect = [[GLKBaseEffect alloc] init];
     
     
@@ -235,19 +172,14 @@ const GLubyte Indices[] = {
     self.effect.texture2d0.enabled = true;
 #endif
     
-    
-    // New lines
-    glGenVertexArraysOES(1, &_vertexArray); glBindVertexArrayOES(_vertexArray);
-    
-    // Old stuff
+    glGenVertexArraysOES(1, &_vertexArray);
+    glBindVertexArrayOES(_vertexArray);
     glGenBuffers(1, &_vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
     glGenBuffers(1, &_indexBuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
-    
-    // New lines (were previously in draw)
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition,
                           3,
@@ -255,6 +187,7 @@ const GLubyte Indices[] = {
                           GL_FALSE,
                           sizeof(Vertex),
                           offsetof(Vertex, Position));
+    
 #if defined(VWW_GL_ENABLE_COLORS)
     glEnableVertexAttribArray(GLKVertexAttribColor);
     glVertexAttribPointer(GLKVertexAttribColor,
@@ -299,6 +232,10 @@ const GLubyte Indices[] = {
     self.effect.light0.position = GLKVector4Make(10, 10, -8, 1);
 //    self.effect.lightingType = GLKLightingTypePerPixel;
 #endif
+    
+//    self.modelview_stack = GLKMatrixStackCreate(0);
+//    GLKMatrixStackPush(self.modelview_stack);
+
 }
 
 - (void)tearDownGL {
@@ -312,6 +249,8 @@ const GLubyte Indices[] = {
     
 }
 
+
+#pragma mark - Timer selectors
 -(void)rotateTimerFire{
     NSLog(@"%s", __FUNCTION__   );
 }
@@ -360,7 +299,6 @@ const GLubyte Indices[] = {
 
 #pragma mark - Implements GLKViewControllerDelegate
 - (void)glkViewController:(GLKViewController *)controller willPause:(BOOL)pause{
-    
     NSLog(@"%s", __FUNCTION__);
 }
 
@@ -370,16 +308,16 @@ const GLubyte Indices[] = {
 }
 
 - (void)update{
-//    NSLog(@"%s", __FUNCTION__);
     float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
-    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.0f, 20.0f);
+    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.0f, 50.0f);
     self.effect.transform.projectionMatrix = projectionMatrix;
     
-    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -6.0f);
+    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -16.0f);
     modelViewMatrix = GLKMatrix4Translate(modelViewMatrix, _translateX, _translateY, _translateZ);
     modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(self.rotateY), 1, 0, 0);
     modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(self.rotateX), 0, 1, 0);
     modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(self.rotateZ), 0, 0, 1);
+    modelViewMatrix = GLKMatrix4Translate(modelViewMatrix, 0, 0, self.translateZ);
     
     self.effect.transform.modelviewMatrix = modelViewMatrix;
 }
@@ -387,25 +325,11 @@ const GLubyte Indices[] = {
 
 #pragma mark = Implements VWWMotionMonitorDelegate
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender accelerometerUpdated:(MotionDevice)device{
-//    float sensitivity = 100;
-//    _rotationX = sensitivity * device.y.current;
-//    _rotationY = -sensitivity * device.x.current;
-////    _rotationZ = 30 * device.z.current;
-
+ //   NSLog(@"%@", [self.motionMonitor description:device]);
+    self.translateZ = device.z.current * 10;
 }
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender magnetometerUpdated:(MotionDevice)device{
-//    float sensitivity = 400;
-//    _colorX = abs(device.x.current)/sensitivity;
-//    _colorY = abs(device.y.current)/sensitivity;
-//    _colorZ = abs(device.z.current)/sensitivity;
 }
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender gyroUpdated:(MotionDevice)device{
-//    float accelerometerSensitivity = 2.0;
-//    _translateX = accelerometerSensitivity * device.x.current;
-//    _translateY = accelerometerSensitivity * device.y.current * 2.0;
-//    _translateZ = accelerometerSensitivity * device.z.current * 2.0;
 }
-
-
-
 @end

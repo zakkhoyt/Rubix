@@ -47,4 +47,5 @@ typedef struct{
 -(void)stopMagnetometer;
 -(void)startGyros;
 -(void)stopGyros;
+-(NSString*)description:(MotionDevice)device;
 @end
