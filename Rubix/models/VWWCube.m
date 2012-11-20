@@ -5,7 +5,7 @@
 //  Created by Zakk Hoyt on 11/12/12.
 //  Copyright (c) 2012 Zakk Hoyt. All rights reserved.
 //
-//  Visualize the cube face like this
+//  Visualize the cube face like this represented by [x][y]
 //  [0][0], [0][1], [0][2]
 //  [1][0], [1][1], [1][2]
 //  [2][0], [2][1], [2][2]

@@ -10,6 +10,7 @@
 
 #define VWW_GL_ENABLE_TEXTURES 1
 //#define VWW_GL_ENABLE_LIGHTING 1
+//#define VWW_GL_ENABLE_COLORS 1
 
 
 #import <GLKit/GLKit.h>
@@ -17,6 +18,10 @@
 #import "VWWViewController.h"
 #import "VWWCube.h"
 #import "VWWMotionMonitor.h"
+
+const CGFloat kRotateXSensitivity = 1.25f;
+const CGFloat kRotateYSensitivity = 0.25f;
+const CGFloat kRotateZSensitivity = 0.25f;
 
 
 typedef struct {
@@ -83,20 +88,12 @@ const GLubyte Indices[] = {
     
 @interface VWWViewController () <GLKViewControllerDelegate,
     VWWMotionMonitorDelegate>{
-        GLuint _vertexArray;
-        GLuint _vertexBuffer;
-        GLuint _indexBuffer;
-        float _rotationX;
-        float _rotationY;
-        float _rotationZ;
-        float _translateX;
-        float _translateY;
-        float _translateZ;
-        float _colorX;
-        float _colorY;
-        float _colorZ;
-        
+
 }
+
+@property (nonatomic) GLuint vertexArray;
+@property (nonatomic) GLuint vertexBuffer;
+@property (nonatomic) GLuint indexBuffer;
 @property (nonatomic, retain) VWWCube* cube;
 @property (nonatomic, retain) EAGLContext * context;
 @property (nonatomic, retain) IBOutlet GLKView* view;
@@ -105,6 +102,17 @@ const GLubyte Indices[] = {
 @property (nonatomic) CGPoint touchBegan;
 @property (nonatomic) CGPoint touchMoved;
 @property (nonatomic) CGPoint touchEnded;
+@property (nonatomic) CGFloat rotateX;
+@property (nonatomic) CGFloat rotateY;
+@property (nonatomic) CGFloat rotateZ;
+@property (nonatomic) CGFloat translateX;
+@property (nonatomic) CGFloat translateY;
+@property (nonatomic) CGFloat translateZ;
+@property (nonatomic) CGFloat colorX;
+@property (nonatomic) CGFloat colorY;
+@property (nonatomic) CGFloat colorZ;
+@property (nonatomic, retain) NSTimer* rotateTimer;
+
 @end
 
 @implementation VWWViewController
@@ -114,6 +122,7 @@ const GLubyte Indices[] = {
     if(self){
         [self initializeClass];
         [self createCube];
+        
     }
     return self;
 }
@@ -146,9 +155,20 @@ const GLubyte Indices[] = {
 #pragma mark - UIResponder touch events
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self printMethod:(char*)__FUNCTION__ withTouches:touches withEvent:event];
+    NSArray *touchesArray = [touches allObjects];
+    UITouch* touch = [touchesArray objectAtIndex:0];
+    self.touchBegan = [touch locationInView:nil];
+    
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     [self printMethod:(char*)__FUNCTION__ withTouches:touches withEvent:event];
+    NSArray *touchesArray = [touches allObjects];
+    UITouch* touch = [touchesArray objectAtIndex:0];
+    self.touchMoved = [touch locationInView:nil];
+    _rotateX = self.touchBegan.x - self.touchMoved.x;
+    _rotateY = self.touchBegan.y - self.touchMoved.y;
+    _rotateX *= -kRotateXSensitivity;
+    _rotateY *= -kRotateYSensitivity;
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     [self printMethod:(char*)__FUNCTION__ withTouches:touches withEvent:event];
@@ -178,6 +198,8 @@ const GLubyte Indices[] = {
     self.motionMonitor = [[VWWMotionMonitor alloc]init];
     self.motionMonitor.delegate = self;
     self.rotationRateX = @(0.25);
+    
+    self.rotateTimer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(rotateTimerFire) userInfo:nil repeats:YES];
 }
 
 -(void)createCube{
@@ -188,7 +210,7 @@ const GLubyte Indices[] = {
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     self.view.context = self.context;
     self.view.delegate = self;
-    self.view.drawableColorFormat = GLKViewDrawableColorFormatRGB565;   // consumes less resources than 8888
+    self.view.drawableColorFormat = GLKViewDrawableColorFormatRGB565;   // consumes less resources than RGBA8888
     self.view.drawableDepthFormat = GLKViewDrawableDepthFormat16;       // probably need this for 3D
 }
 
@@ -204,7 +226,7 @@ const GLubyte Indices[] = {
                               GLKTextureLoaderOriginBottomLeft,
                               nil];
     NSError * error;
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"tile_floor" ofType:@"png"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"3x3_01" ofType:@"png"];
     GLKTextureInfo * info = [GLKTextureLoader textureWithContentsOfFile:path options:options error:&error];
     if (info == nil) {
         NSLog(@"Error loading file: %@", [error localizedDescription]);
@@ -233,6 +255,7 @@ const GLubyte Indices[] = {
                           GL_FALSE,
                           sizeof(Vertex),
                           offsetof(Vertex, Position));
+#if defined(VWW_GL_ENABLE_COLORS)
     glEnableVertexAttribArray(GLKVertexAttribColor);
     glVertexAttribPointer(GLKVertexAttribColor,
                           4,
@@ -240,7 +263,8 @@ const GLubyte Indices[] = {
                           GL_FALSE,
                           sizeof(Vertex),
                           offsetof(Vertex, Color));
-    
+#endif
+
     glEnableVertexAttribArray(GLKVertexAttribNormal);
     glVertexAttribPointer(GLKVertexAttribNormal,
                           3,
@@ -267,13 +291,13 @@ const GLubyte Indices[] = {
     // Setup a light (dont' forget the normals!)
 #if defined(VWW_GL_ENABLE_LIGHTING)
     self.effect.light0.enabled = GL_TRUE;
-//    self.effect.light0.diffuseColor = GLKVector4Make(0, 1, 1, 1);
+    self.effect.light0.diffuseColor = GLKVector4Make(0, 1, 1, 1);
     self.effect.light0.ambientColor = GLKVector4Make(0, 0, 0, 1);
 //    self.effect.light0.specularColor = GLKVector4Make(0, 0, 0, 1);
 //    self.effect.lightModelAmbientColor = GLKVector4Make(0, 0, 0, 1);
 //   self.effect.material.specularColor = GLKVector4Make(1, 1, 1, 1);
-    self.effect.light0.position = GLKVector4Make(5, 5, -5, 1);
-    self.effect.lightingType = GLKLightingTypePerPixel;
+    self.effect.light0.position = GLKVector4Make(10, 10, -8, 1);
+//    self.effect.lightingType = GLKLightingTypePerPixel;
 #endif
 }
 
@@ -286,6 +310,10 @@ const GLubyte Indices[] = {
     
     [self.effect release];
     
+}
+
+-(void)rotateTimerFire{
+    NSLog(@"%s", __FUNCTION__   );
 }
 
 
@@ -312,6 +340,7 @@ const GLubyte Indices[] = {
                           GL_FALSE,
                           sizeof(Vertex),
                           (const GLvoid *)offsetof(Vertex, Position));
+#if defined(VWW_GL_ENABLE_COLORS)
     glEnableVertexAttribArray(GLKVertexAttribColor);
     glVertexAttribPointer(GLKVertexAttribColor,
                           4,
@@ -320,6 +349,7 @@ const GLubyte Indices[] = {
                           sizeof(Vertex),
                           (const GLvoid *)
                           offsetof(Vertex, Color));
+#endif
     
     glBindVertexArrayOES(_vertexArray);
     glDrawElements(GL_TRIANGLES,
@@ -347,9 +377,9 @@ const GLubyte Indices[] = {
     
     GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -6.0f);
     modelViewMatrix = GLKMatrix4Translate(modelViewMatrix, _translateX, _translateY, _translateZ);
-    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(_rotationX), 1, 0, 0);
-    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(_rotationY), 0, 1, 0);
-    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(_rotationZ), 0, 0, 1);
+    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(self.rotateY), 1, 0, 0);
+    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(self.rotateX), 0, 1, 0);
+    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(self.rotateZ), 0, 0, 1);
     
     self.effect.transform.modelviewMatrix = modelViewMatrix;
 }
@@ -357,17 +387,17 @@ const GLubyte Indices[] = {
 
 #pragma mark = Implements VWWMotionMonitorDelegate
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender accelerometerUpdated:(MotionDevice)device{
-    float sensitivity = 100;
-    _rotationX = sensitivity * device.y.current;
-    _rotationY = -sensitivity * device.x.current;
-//    _rotationZ = 30 * device.z.current;
+//    float sensitivity = 100;
+//    _rotationX = sensitivity * device.y.current;
+//    _rotationY = -sensitivity * device.x.current;
+////    _rotationZ = 30 * device.z.current;
 
 }
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender magnetometerUpdated:(MotionDevice)device{
-    float sensitivity = 400;
-    _colorX = abs(device.x.current)/sensitivity;
-    _colorY = abs(device.y.current)/sensitivity;
-    _colorZ = abs(device.z.current)/sensitivity;
+//    float sensitivity = 400;
+//    _colorX = abs(device.x.current)/sensitivity;
+//    _colorY = abs(device.y.current)/sensitivity;
+//    _colorZ = abs(device.z.current)/sensitivity;
 }
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender gyroUpdated:(MotionDevice)device{
 //    float accelerometerSensitivity = 2.0;
@@ -375,5 +405,7 @@ const GLubyte Indices[] = {
 //    _translateY = accelerometerSensitivity * device.y.current * 2.0;
 //    _translateZ = accelerometerSensitivity * device.z.current * 2.0;
 }
+
+
 
 @end

@@ -10,5 +10,4 @@
 
 
 @interface VWWViewController : GLKViewController
-@property (nonatomic, retain) NSNumber* rotationRateX;
 @end

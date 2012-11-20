@@ -31,7 +31,12 @@
 		C678666E1653272000082C3C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678666B1653272000082C3C /* OpenGLES.framework */; };
 		C678666F1653272000082C3C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678666C1653272000082C3C /* QuartzCore.framework */; };
 		C67866751653293800082C3C /* VWWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C67866741653293800082C3C /* VWWViewController.m */; };
-		C6A4027B165B0F8F0068D5FD /* tile_floor.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A4027A165B0F8F0068D5FD /* tile_floor.png */; };
+		C6A9D37C165B478B00BF3943 /* 3x3_01.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A9D376165B478A00BF3943 /* 3x3_01.png */; };
+		C6A9D37D165B478B00BF3943 /* 3x3_02.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A9D377165B478A00BF3943 /* 3x3_02.png */; };
+		C6A9D37E165B478B00BF3943 /* 3x3_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A9D378165B478A00BF3943 /* 3x3_03.png */; };
+		C6A9D37F165B478B00BF3943 /* 3x3_04.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A9D379165B478A00BF3943 /* 3x3_04.png */; };
+		C6A9D380165B478B00BF3943 /* 3x3_05.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A9D37A165B478A00BF3943 /* 3x3_05.png */; };
+		C6A9D383165B488700BF3943 /* 3x3_00.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A9D382165B488700BF3943 /* 3x3_00.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +81,12 @@
 		C678666C1653272000082C3C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C67866731653293800082C3C /* VWWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWViewController.h; path = controllers/VWWViewController.h; sourceTree = "<group>"; };
 		C67866741653293800082C3C /* VWWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWViewController.m; path = controllers/VWWViewController.m; sourceTree = "<group>"; };
-		C6A4027A165B0F8F0068D5FD /* tile_floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tile_floor.png; path = textures/tile_floor.png; sourceTree = "<group>"; };
+		C6A9D376165B478A00BF3943 /* 3x3_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3x3_01.png; path = textures/3x3_01.png; sourceTree = "<group>"; };
+		C6A9D377165B478A00BF3943 /* 3x3_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3x3_02.png; path = textures/3x3_02.png; sourceTree = "<group>"; };
+		C6A9D378165B478A00BF3943 /* 3x3_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3x3_03.png; path = textures/3x3_03.png; sourceTree = "<group>"; };
+		C6A9D379165B478A00BF3943 /* 3x3_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3x3_04.png; path = textures/3x3_04.png; sourceTree = "<group>"; };
+		C6A9D37A165B478A00BF3943 /* 3x3_05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3x3_05.png; path = textures/3x3_05.png; sourceTree = "<group>"; };
+		C6A9D382165B488700BF3943 /* 3x3_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3x3_00.png; path = textures/3x3_00.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,7 +230,12 @@
 		C6A40278165B0F510068D5FD /* textures */ = {
 			isa = PBXGroup;
 			children = (
-				C6A4027A165B0F8F0068D5FD /* tile_floor.png */,
+				C6A9D382165B488700BF3943 /* 3x3_00.png */,
+				C6A9D376165B478A00BF3943 /* 3x3_01.png */,
+				C6A9D377165B478A00BF3943 /* 3x3_02.png */,
+				C6A9D378165B478A00BF3943 /* 3x3_03.png */,
+				C6A9D379165B478A00BF3943 /* 3x3_04.png */,
+				C6A9D37A165B478A00BF3943 /* 3x3_05.png */,
 			);
 			name = textures;
 			sourceTree = "<group>";
@@ -303,7 +318,12 @@
 				C67866361653249100082C3C /* Default-568h@2x.png in Resources */,
 				C67866391653249100082C3C /* MainStoryboard_iPhone.storyboard in Resources */,
 				C678663C1653249100082C3C /* MainStoryboard_iPad.storyboard in Resources */,
-				C6A4027B165B0F8F0068D5FD /* tile_floor.png in Resources */,
+				C6A9D37C165B478B00BF3943 /* 3x3_01.png in Resources */,
+				C6A9D37D165B478B00BF3943 /* 3x3_02.png in Resources */,
+				C6A9D37E165B478B00BF3943 /* 3x3_03.png in Resources */,
+				C6A9D37F165B478B00BF3943 /* 3x3_04.png in Resources */,
+				C6A9D380165B478B00BF3943 /* 3x3_05.png in Resources */,
+				C6A9D383165B488700BF3943 /* 3x3_00.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
