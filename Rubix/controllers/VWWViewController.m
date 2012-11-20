@@ -7,69 +7,80 @@
 //
 //  See tutorial here: http://www.raywenderlich.com/5235/beginning-opengl-es-2-0-with-glkit-part-2
 //  iOS6 book here: http://www.raywenderlich.com/store/ios-6-by-tutorials
+
+#define VWW_GL_ENABLE_TEXTURES 1
+//#define VWW_GL_ENABLE_LIGHTING 1
+
+
 #import <GLKit/GLKit.h>
 #import <OpenGLES/ES2/gl.h>
 #import "VWWViewController.h"
 #import "VWWCube.h"
 #import "VWWMotionMonitor.h"
-\
+
+
 typedef struct {
     float Position[3];
     float Color[4];
+    float TexCoord[2];
     float Normal[3];
 } Vertex;
 
 const Vertex Vertices[] = {
-    // back
-    {{-1, -1, -1}, {1, 0, 0, 1}, {0, 0, -1}},
-    {{-1, 1, -1}, {0, 1, 0, 1}, {0, 0, -1}},
-    {{1, 1, -1}, {0, 0, 1, 1}, {0, 0, -1}},
-    {{1, -1, -1}, {0, 0, 0, 1}, {0, 0, -1}},
-    // top
-    {{1, 1, 1}, {1, 0, 0, 1}, {0, 1, 0}},
-    {{1, 1, -1}, {0, 1, 0, 1}, {0, 1, 0}},
-    {{-1, 1, -1}, {0, 0, 1, 1}, {0, 1, 0}},
-    {{-1, 1, 1}, {0, 0, 0, 1}, {0, 1, 0}},
-    // bottom
-    {{1, -1, 1}, {1, 0, 0, 1}, {0, -1, 0}},
-    {{-1, -1, 1}, {0, 1, 0, 1}, {0, -1, 0}},
-    {{-1, -1, -1}, {0, 0, 1, 1}, {0, -1, 0}},
-    {{1, -1, -1}, {0, 0, 0, 1}, {0, -1, 0}},
-    // left
-    {{-1, -1, -1}, {1, 0, 0, 1}, {-1, 0, 0}},
-    {{-1, -1, 1}, {0, 1, 0, 1}, {-1, 0, 0}},
-    {{-1, 1, 1}, {0, 0, 1, 1}, {-1, 0, 0}},
-    {{-1, 1, -1}, {0, 0, 0, 1}, {-1, 0, 0}},
-    // right
-    {{1, -1, -1}, {1, 0, 0, 1}, {1, 0, 0}},
-    {{1, 1, -1}, {0, 1, 0, 1}, {1, 0, 0}},
-    {{1, 1, 1}, {0, 0, 1, 1}, {1, 0, 0}},
-    {{1, -1, 1}, {0, 0, 0, 1}, {1, 0, 0}},
-    // front
-    {{1, -1, 1}, {1, 0, 0, 1}, {0, 0, 1}},
-    {{1, 1, 1}, {0, 1, 0, 1}, {0, 0, 1}},
-    {{-1, 1, 1}, {0, 0, 1, 1}, {0, 0, 1}},
-    {{-1, -1, 1}, {0, 0, 0, 1}, {0, 0, 1}},
+    // Front
+    {{1, -1, 1}, {1, 0, 0, 1}, {1, 0}, {0, 0, 1}},
+    {{1, 1, 1}, {0, 1, 0, 1}, {1, 1}, {0, 0, 1}},
+    {{-1, 1, 1}, {0, 0, 1, 1}, {0, 1}, {0, 0, 1}},
+    {{-1, -1, 1}, {0, 0, 0, 1}, {0, 0}, {0, 0, 1}},
+    // Back
+    {{1, 1, -1}, {1, 0, 0, 1}, {0, 1}, {0, 0, -1}},
+    {{-1, -1, -1}, {0, 1, 0, 1}, {1, 0}, {0, 0, -1}},
+    {{1, -1, -1}, {0, 0, 1, 1}, {0, 0}, {0, 0, -1}},
+    {{-1, 1, -1}, {0, 0, 0, 1}, {1, 1}, {0, 0, -1}},
+    // Left
+    {{-1, -1, 1}, {1, 0, 0, 1}, {1, 0}, {-1, 0, 0}},
+    {{-1, 1, 1}, {0, 1, 0, 1}, {1, 1}, {-1, 0, 0}},
+    {{-1, 1, -1}, {0, 0, 1, 1}, {0, 1}, {-1, 0, 0}},
+    {{-1, -1, -1}, {0, 0, 0, 1}, {0, 0}, {-1, 0, 0}},
+    // Right
+    {{1, -1, -1}, {1, 0, 0, 1}, {1, 0}, {1, 0, 0}},
+    {{1, 1, -1}, {0, 1, 0, 1}, {1, 1}, {1, 0, 0}},
+    {{1, 1, 1}, {0, 0, 1, 1}, {0, 1}, {1, 0, 0}},
+    {{1, -1, 1}, {0, 0, 0, 1}, {0, 0}, {1, 0, 0}},
+    // Top
+    {{1, 1, 1}, {1, 0, 0, 1}, {1, 0}, {0, 1, 0}},
+    {{1, 1, -1}, {0, 1, 0, 1}, {1, 1}, {0, 1, 0}},
+    {{-1, 1, -1}, {0, 0, 1, 1}, {0, 1}, {0, 1, 0}},
+    {{-1, 1, 1}, {0, 0, 0, 1}, {0, 0}, {0, 1, 0}},
+    // Bottom
+    {{1, -1, -1}, {1, 0, 0, 1}, {1, 0}, {0, -1, 0}},
+    {{1, -1, 1}, {0, 1, 0, 1}, {1, 1}, {0, -1, 0}},
+    {{-1, -1, 1}, {0, 0, 1, 1}, {0, 1}, {0, -1, 0}},
+    {{-1, -1, -1}, {0, 0, 0, 1}, {0, 0}, {0, -1, 0}}
 };
-
-// Draw triangles with the data above
 const GLubyte Indices[] = {
+    // Front
     0, 1, 2,
     2, 3, 0,
-    4, 5, 6,
-    6, 7, 4,
+    // Back
+    4, 6, 5,
+    4, 5, 7,
+    // Left
     8, 9, 10,
     10, 11, 8,
+    // Right
     12, 13, 14,
     14, 15, 12,
+    // Top
     16, 17, 18,
     18, 19, 16,
+    // Bottom
     20, 21, 22,
-    22, 23, 20,
+    22, 23, 20
 };
-
-
-
+    
+    
+    
 @interface VWWViewController () <GLKViewControllerDelegate,
     VWWMotionMonitorDelegate>{
         GLuint _vertexArray;
@@ -91,6 +102,9 @@ const GLubyte Indices[] = {
 @property (nonatomic, retain) IBOutlet GLKView* view;
 @property (nonatomic, retain) GLKBaseEffect* effect;
 @property (nonatomic, retain) VWWMotionMonitor* motionMonitor;
+@property (nonatomic) CGPoint touchBegan;
+@property (nonatomic) CGPoint touchMoved;
+@property (nonatomic) CGPoint touchEnded;
 @end
 
 @implementation VWWViewController
@@ -129,6 +143,35 @@ const GLubyte Indices[] = {
 }
 
 
+#pragma mark - UIResponder touch events
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self printMethod:(char*)__FUNCTION__ withTouches:touches withEvent:event];
+}
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self printMethod:(char*)__FUNCTION__ withTouches:touches withEvent:event];
+}
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self printMethod:(char*)__FUNCTION__ withTouches:touches withEvent:event];
+}
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self printMethod:(char*)__FUNCTION__ withTouches:touches withEvent:event];
+}
+
+-(void)printMethod:(char*)method withTouches:(NSSet*)touches withEvent:(UIEvent*)event{
+    NSArray *touchesArray = [touches allObjects];
+    NSMutableString* s = [NSMutableString new];
+    for(int index = 0; index < touches.count; index++){
+        UITouch *touch = (UITouch *)[touchesArray objectAtIndex:index];
+        CGPoint point = [touch locationInView:nil];
+        [s appendFormat:@" %@", NSStringFromCGPoint(point)];
+    }
+    
+    NSLog(@"%s numTouches:%d %@", method, touches.count, s);
+    if(touches.count > 2){
+        self.paused = !self.paused;
+    }
+}
+
 #pragma mark - Custom methods
 
 -(void)initializeClass{
@@ -153,6 +196,23 @@ const GLubyte Indices[] = {
     [EAGLContext setCurrentContext:self.context];
     
     self.effect = [[GLKBaseEffect alloc] init];
+    
+    
+#if defined(VWW_GL_ENABLE_TEXTURES)
+    NSDictionary * options = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                [NSNumber numberWithBool:YES],
+                              GLKTextureLoaderOriginBottomLeft,
+                              nil];
+    NSError * error;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"tile_floor" ofType:@"png"];
+    GLKTextureInfo * info = [GLKTextureLoader textureWithContentsOfFile:path options:options error:&error];
+    if (info == nil) {
+        NSLog(@"Error loading file: %@", [error localizedDescription]);
+    }
+    self.effect.texture2d0.name = info.name;
+    self.effect.texture2d0.enabled = true;
+#endif
+    
     
     // New lines
     glGenVertexArraysOES(1, &_vertexArray); glBindVertexArrayOES(_vertexArray);
@@ -189,6 +249,15 @@ const GLubyte Indices[] = {
                           sizeof(Vertex),
                           (const GLvoid *)offsetof(Vertex, Normal));
     
+#if defined(VWW_GL_ENABLE_TEXTURES)
+    glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+    glVertexAttribPointer(GLKVertexAttribTexCoord0,
+                          2,
+                          GL_FLOAT,
+                          GL_FALSE,
+                          sizeof(Vertex),
+                          (const GLvoid *)offsetof(Vertex, TexCoord));
+#endif
     
     glBindVertexArrayOES(0);
     
@@ -196,18 +265,16 @@ const GLubyte Indices[] = {
     glEnable(GL_CULL_FACE);
     
     // Setup a light (dont' forget the normals!)
-//    self.effect.light0.enabled = GL_TRUE;
-//    self.effect.light0.diffuseColor = GLKVector4Make(1, 1, 1, 1.0);
-//    self.effect.light0.position = GLKVector4Make(1, 1, 0, 1);
-    
+#if defined(VWW_GL_ENABLE_LIGHTING)
     self.effect.light0.enabled = GL_TRUE;
 //    self.effect.light0.diffuseColor = GLKVector4Make(0, 1, 1, 1);
-//    self.effect.light0.ambientColor = GLKVector4Make(0, 0, 0, 1);
+    self.effect.light0.ambientColor = GLKVector4Make(0, 0, 0, 1);
 //    self.effect.light0.specularColor = GLKVector4Make(0, 0, 0, 1);
 //    self.effect.lightModelAmbientColor = GLKVector4Make(0, 0, 0, 1);
 //   self.effect.material.specularColor = GLKVector4Make(1, 1, 1, 1);
-    self.effect.light0.position = GLKVector4Make(0, 1.5, -5, 1);
+    self.effect.light0.position = GLKVector4Make(5, 5, -5, 1);
     self.effect.lightingType = GLKLightingTypePerPixel;
+#endif
 }
 
 - (void)tearDownGL {
@@ -220,9 +287,8 @@ const GLubyte Indices[] = {
     [self.effect release];
     
 }
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    self.paused = !self.paused;
-}
+
+
 
 #pragma mark - Implements GLKViewDelegate
 
@@ -291,20 +357,23 @@ const GLubyte Indices[] = {
 
 #pragma mark = Implements VWWMotionMonitorDelegate
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender accelerometerUpdated:(MotionDevice)device{
-    float accelerometerSensitivity = 2.0;
-    _translateX = accelerometerSensitivity * device.x.current;
-    _translateY = accelerometerSensitivity * device.y.current * 2.0;
-    _translateZ = accelerometerSensitivity * device.z.current * 2.0;
+    float sensitivity = 100;
+    _rotationX = sensitivity * device.y.current;
+    _rotationY = -sensitivity * device.x.current;
+//    _rotationZ = 30 * device.z.current;
+
 }
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender magnetometerUpdated:(MotionDevice)device{
-    _colorX = abs(device.x.current)/400.0;
-    _colorY = abs(device.y.current)/400.0;
-    _colorZ = abs(device.z.current)/400.0;
+    float sensitivity = 400;
+    _colorX = abs(device.x.current)/sensitivity;
+    _colorY = abs(device.y.current)/sensitivity;
+    _colorZ = abs(device.z.current)/sensitivity;
 }
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender gyroUpdated:(MotionDevice)device{
-    _rotationX = 30 * device.x.current;
-    _rotationY = 30 * device.y.current;
-    _rotationZ = 30 * device.z.current;
+//    float accelerometerSensitivity = 2.0;
+//    _translateX = accelerometerSensitivity * device.x.current;
+//    _translateY = accelerometerSensitivity * device.y.current * 2.0;
+//    _translateZ = accelerometerSensitivity * device.z.current * 2.0;
 }
 
 @end

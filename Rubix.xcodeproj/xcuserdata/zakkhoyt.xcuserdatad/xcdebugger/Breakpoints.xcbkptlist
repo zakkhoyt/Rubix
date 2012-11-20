@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Rubix/controllers/VWWViewController.m"
-         timestampString = "374627206.846185"
+         timestampString = "375067676.129947"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "203"
-         endingLineNumber = "203"
+         startingLineNumber = "269"
+         endingLineNumber = "269"
          landmarkName = "-setupGL"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,24 +21,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Rubix/controllers/VWWViewController.m"
-         timestampString = "374627206.846185"
+         timestampString = "375067676.129947"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "133"
-         endingLineNumber = "133"
-         landmarkName = "-initializeClass"
-         landmarkType = "5">
+         startingLineNumber = "176"
+         endingLineNumber = "176"
+         landmarkName = "@implementation VWWViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Rubix/controllers/VWWViewController.m"
-         timestampString = "374627206.846185"
+         timestampString = "375067676.129947"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "170"
-         endingLineNumber = "170"
+         startingLineNumber = "230"
+         endingLineNumber = "230"
          landmarkName = "-setupGL"
          landmarkType = "5">
       </FileBreakpoint>
