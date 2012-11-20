@@ -19,7 +19,6 @@
 		C67866341653249100082C3C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C67866331653249100082C3C /* Default@2x.png */; };
 		C67866361653249100082C3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C67866351653249100082C3C /* Default-568h@2x.png */; };
 		C67866391653249100082C3C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C67866371653249100082C3C /* MainStoryboard_iPhone.storyboard */; };
-		C678663C1653249100082C3C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C678663A1653249100082C3C /* MainStoryboard_iPad.storyboard */; };
 		C67866471653249100082C3C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866461653249100082C3C /* SenTestingKit.framework */; };
 		C67866481653249100082C3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678661F1653249100082C3C /* UIKit.framework */; };
 		C67866491653249100082C3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866211653249100082C3C /* Foundation.framework */; };
@@ -37,6 +36,9 @@
 		C6A9D37F165B478B00BF3943 /* 3x3_04.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A9D379165B478A00BF3943 /* 3x3_04.png */; };
 		C6A9D380165B478B00BF3943 /* 3x3_05.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A9D37A165B478A00BF3943 /* 3x3_05.png */; };
 		C6A9D383165B488700BF3943 /* 3x3_00.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A9D382165B488700BF3943 /* 3x3_00.png */; };
+		C6CA7C33165C3D2700FA1AC6 /* VWWCubeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CA7C30165C3D2700FA1AC6 /* VWWCubeScene.m */; };
+		C6CA7C34165C3D2700FA1AC6 /* VWWScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CA7C32165C3D2700FA1AC6 /* VWWScene.m */; };
+		C6CA7C36165C3D4B00FA1AC6 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6CA7C35165C3D4B00FA1AC6 /* MainStoryboard_iPad.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +69,6 @@
 		C67866331653249100082C3C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		C67866351653249100082C3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C67866381653249100082C3C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		C678663B1653249100082C3C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C67866451653249100082C3C /* RubixTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RubixTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C67866461653249100082C3C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		C678664E1653249100082C3C /* RubixTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RubixTests-Info.plist"; sourceTree = "<group>"; };
@@ -81,13 +82,17 @@
 		C678666C1653272000082C3C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C67866731653293800082C3C /* VWWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWViewController.h; path = controllers/VWWViewController.h; sourceTree = "<group>"; };
 		C67866741653293800082C3C /* VWWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWViewController.m; path = controllers/VWWViewController.m; sourceTree = "<group>"; };
-		C6A40284165BF9BD0068D5FD /* VWWCubeArrays.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWWCubeArrays.h; sourceTree = "<group>"; };
 		C6A9D376165B478A00BF3943 /* 3x3_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3x3_01.png; path = textures/3x3_01.png; sourceTree = "<group>"; };
 		C6A9D377165B478A00BF3943 /* 3x3_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3x3_02.png; path = textures/3x3_02.png; sourceTree = "<group>"; };
 		C6A9D378165B478A00BF3943 /* 3x3_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3x3_03.png; path = textures/3x3_03.png; sourceTree = "<group>"; };
 		C6A9D379165B478A00BF3943 /* 3x3_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3x3_04.png; path = textures/3x3_04.png; sourceTree = "<group>"; };
 		C6A9D37A165B478A00BF3943 /* 3x3_05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3x3_05.png; path = textures/3x3_05.png; sourceTree = "<group>"; };
 		C6A9D382165B488700BF3943 /* 3x3_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3x3_00.png; path = textures/3x3_00.png; sourceTree = "<group>"; };
+		C6CA7C2F165C3D2700FA1AC6 /* VWWCubeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCubeScene.h; sourceTree = "<group>"; };
+		C6CA7C30165C3D2700FA1AC6 /* VWWCubeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCubeScene.m; sourceTree = "<group>"; };
+		C6CA7C31165C3D2700FA1AC6 /* VWWScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWScene.h; sourceTree = "<group>"; };
+		C6CA7C32165C3D2700FA1AC6 /* VWWScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWScene.m; sourceTree = "<group>"; };
+		C6CA7C35165C3D4B00FA1AC6 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard_iPad.storyboard; path = storyboards/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,15 +160,13 @@
 		C67866251653249100082C3C /* Rubix */ = {
 			isa = PBXGroup;
 			children = (
-				C6A40278165B0F510068D5FD /* textures */,
 				C678669216555B9200082C3C /* documentation */,
+				C6CA7C2A165C3A9F00FA1AC6 /* storyboards */,
+				C6CA7C2E165C3D2700FA1AC6 /* scenes */,
 				C6786662165324C300082C3C /* controllers */,
 				C6786661165324BD00082C3C /* models */,
-				C678662E1653249100082C3C /* VWWAppDelegate.h */,
-				C678662F1653249100082C3C /* VWWAppDelegate.m */,
-				C67866371653249100082C3C /* MainStoryboard_iPhone.storyboard */,
-				C678663A1653249100082C3C /* MainStoryboard_iPad.storyboard */,
 				C67866261653249100082C3C /* Supporting Files */,
+				C6A40278165B0F510068D5FD /* textures */,
 			);
 			path = Rubix;
 			sourceTree = "<group>";
@@ -171,6 +174,8 @@
 		C67866261653249100082C3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C678662E1653249100082C3C /* VWWAppDelegate.h */,
+				C678662F1653249100082C3C /* VWWAppDelegate.m */,
 				C67866271653249100082C3C /* Rubix-Info.plist */,
 				C67866281653249100082C3C /* InfoPlist.strings */,
 				C678662B1653249100082C3C /* main.m */,
@@ -215,7 +220,6 @@
 		C6786662165324C300082C3C /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C6A40284165BF9BD0068D5FD /* VWWCubeArrays.h */,
 				C67866731653293800082C3C /* VWWViewController.h */,
 				C67866741653293800082C3C /* VWWViewController.m */,
 			);
@@ -240,6 +244,26 @@
 				C6A9D37A165B478A00BF3943 /* 3x3_05.png */,
 			);
 			name = textures;
+			sourceTree = "<group>";
+		};
+		C6CA7C2A165C3A9F00FA1AC6 /* storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C6CA7C35165C3D4B00FA1AC6 /* MainStoryboard_iPad.storyboard */,
+				C67866371653249100082C3C /* MainStoryboard_iPhone.storyboard */,
+			);
+			name = storyboards;
+			sourceTree = "<group>";
+		};
+		C6CA7C2E165C3D2700FA1AC6 /* scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C6CA7C31165C3D2700FA1AC6 /* VWWScene.h */,
+				C6CA7C32165C3D2700FA1AC6 /* VWWScene.m */,
+				C6CA7C2F165C3D2700FA1AC6 /* VWWCubeScene.h */,
+				C6CA7C30165C3D2700FA1AC6 /* VWWCubeScene.m */,
+			);
+			path = scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,13 +343,13 @@
 				C67866341653249100082C3C /* Default@2x.png in Resources */,
 				C67866361653249100082C3C /* Default-568h@2x.png in Resources */,
 				C67866391653249100082C3C /* MainStoryboard_iPhone.storyboard in Resources */,
-				C678663C1653249100082C3C /* MainStoryboard_iPad.storyboard in Resources */,
 				C6A9D37C165B478B00BF3943 /* 3x3_01.png in Resources */,
 				C6A9D37D165B478B00BF3943 /* 3x3_02.png in Resources */,
 				C6A9D37E165B478B00BF3943 /* 3x3_03.png in Resources */,
 				C6A9D37F165B478B00BF3943 /* 3x3_04.png in Resources */,
 				C6A9D380165B478B00BF3943 /* 3x3_05.png in Resources */,
 				C6A9D383165B488700BF3943 /* 3x3_00.png in Resources */,
+				C6CA7C36165C3D4B00FA1AC6 /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +389,8 @@
 				C67866651653255B00082C3C /* VWWCube.m in Sources */,
 				C67866751653293800082C3C /* VWWViewController.m in Sources */,
 				C6073BFC16533B1A00277649 /* VWWMotionMonitor.m in Sources */,
+				C6CA7C33165C3D2700FA1AC6 /* VWWCubeScene.m in Sources */,
+				C6CA7C34165C3D2700FA1AC6 /* VWWScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,14 +428,6 @@
 				C67866381653249100082C3C /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		C678663A1653249100082C3C /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C678663B1653249100082C3C /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		C678664F1653249100082C3C /* InfoPlist.strings */ = {
