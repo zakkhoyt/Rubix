@@ -146,7 +146,6 @@ const CGFloat kRotateZSensitivity = 0.25f;
 }
 
 - (void)glkViewControllerUpdate:(GLKViewController *)controller{
-    
     NSLog(@"%s", __FUNCTION__);
 }
 

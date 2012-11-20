@@ -85,21 +85,10 @@ const GLubyte Indices[] = {
 
 @implementation VWWCubeScene
 
--(id)initWithFrame:(CGRect)frame context:(EAGLContext *)context{
-    self = [super init];
-    if(self){
-        self.bounds = frame;
-        self.context = context;
-        self.clearColor = [UIColor blackColor];
-    }
-    return self;
-}
-
-
 
 -(void)update {
 //    NSLog(@"%s", __FUNCTION__);
-    [super update];
+
 //    float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
 //    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.0f, 50.0f);
 //    self.effect.transform.projectionMatrix = projectionMatrix;
@@ -116,7 +105,7 @@ const GLubyte Indices[] = {
 -(void)render {
     
 //    NSLog(@"%s", __FUNCTION__);
-    [super render];
+
     
     float r,g,b,a = 1.0;
     [self.clearColor getRed:&r green:&g blue:&b alpha:&a];
@@ -162,7 +151,6 @@ const GLubyte Indices[] = {
 
 - (void)setupGL {
 //    NSLog(@"%s", __FUNCTION__);
-    [super setupGL];
     [EAGLContext setCurrentContext:self.context];
     self.effect = [[GLKBaseEffect alloc] init];
     
@@ -254,7 +242,7 @@ const GLubyte Indices[] = {
 
 - (void)tearDownGL {
 //    NSLog(@"%s", __FUNCTION__);
-    [super tearDownGL];
+
     [EAGLContext setCurrentContext:self.context];
     
     glDeleteBuffers(1, &_vertexBuffer);

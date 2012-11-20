@@ -8,7 +8,7 @@
 
 #import "VWWScene.h"
 
-@interface VWWCubeScene : VWWScene <VWWSceneProtocol>
+@interface VWWCubeScene : VWWScene 
 @property (nonatomic) CGFloat rotateX;
 @property (nonatomic) CGFloat rotateY;
 @property (nonatomic) CGFloat rotateZ;

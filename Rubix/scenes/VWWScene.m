@@ -14,20 +14,32 @@
 
 @implementation VWWScene
 
+
 -(id)initWithFrame:(CGRect)frame context:(EAGLContext *)context{
-    return [super init];
+    self = [super init];
+    if(self){
+        self.bounds = frame;
+        self.context = context;
+        self.clearColor = [UIColor blackColor];
+    }
+    return self;
 }
 
+
 -(void)update {
+    NSLog(@"ERROR! Up to child class to implement");
 }
 
 -(void)render {
+    NSLog(@"ERROR! Up to child class to implement");
 }
 
 - (void)setupGL{
+    NSLog(@"ERROR! Up to child class to implement");
 }
 
 - (void)tearDownGL{
+    NSLog(@"ERROR! Up to child class to implement");
 }
 
 @end
