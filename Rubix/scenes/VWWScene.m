@@ -27,19 +27,23 @@
 
 
 -(void)update {
-    NSLog(@"ERROR! Up to child class to implement");
+    NSLog(@"ERROR! Child class to implement");
+    assert(NO);
 }
 
 -(void)render {
-    NSLog(@"ERROR! Up to child class to implement");
+    NSLog(@"ERROR! Child class to implement");
+    assert(NO);
 }
 
 - (void)setupGL{
-    NSLog(@"ERROR! Up to child class to implement");
+    NSLog(@"ERROR! Child child class to implement");
+    assert(NO);
 }
 
 - (void)tearDownGL{
-    NSLog(@"ERROR! Up to child class to implement");
+    NSLog(@"ERROR! Child child class to implement");
+    assert(NO);
 }
 
 @end

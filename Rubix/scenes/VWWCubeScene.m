@@ -143,6 +143,8 @@ const GLubyte Indices[] = {
     glDrawElements(GL_TRIANGLES,
                    sizeof(Indices)/sizeof(Indices[0]),
                    GL_UNSIGNED_BYTE, 0);
+    
+    
 }
 
 
@@ -222,13 +224,11 @@ const GLubyte Indices[] = {
     // Setup a light (dont' forget the normals!)
 #if defined(VWW_CUBE_SCENE_GL_ENABLE_LIGHTING)
     self.effect.light0.enabled = GL_TRUE;
-    self.effect.light0.diffuseColor = GLKVector4Make(0, 1, 1, 1);
-    self.effect.light0.ambientColor = GLKVector4Make(0, 0, 0, 1);
-    //    self.effect.light0.specularColor = GLKVector4Make(0, 0, 0, 1);
-    //    self.effect.lightModelAmbientColor = GLKVector4Make(0, 0, 0, 1);
-    //   self.effect.material.specularColor = GLKVector4Make(1, 1, 1, 1);
+    self.effect.light0.diffuseColor = GLKVector4Make(self.lightDiffuse, self.lightDiffuse, self.lightDiffuse, 1);
+    self.effect.light0.ambientColor = GLKVector4Make(self.lightAmbient, self.lightAmbient, self.lightAmbient, 1);
+    self.effect.light0.specularColor = GLKVector4Make(self.lightSpecular, self.lightSpecular, self.lightSpecular, 1);
     self.effect.light0.position = GLKVector4Make(10, 10, -8, 1);
-    //    self.effect.lightingType = GLKLightingTypePerPixel;
+    self.effect.lightingType = GLKLightingTypePerPixel;
 #endif
     
     //    self.modelview_stack = GLKMatrixStackCreate(0);

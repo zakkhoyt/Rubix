@@ -18,4 +18,8 @@
 @property (nonatomic) CGFloat colorX;
 @property (nonatomic) CGFloat colorY;
 @property (nonatomic) CGFloat colorZ;
+@property (nonatomic) CGFloat lightSpecular;
+@property (nonatomic) CGFloat lightDiffuse;
+@property (nonatomic) CGFloat lightAmbient;
+@property (nonatomic) CGFloat lightShininess;
 @end

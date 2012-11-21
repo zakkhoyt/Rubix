@@ -10,9 +10,6 @@
 //  Matrix info here: http://casualdistractiongames.wordpress.com/
 //  About rendering multiple objects: http://games.ianterrell.com/2d-game-engine-tutorial/
 
-
-
-
 #import <GLKit/GLKit.h>
 #import <OpenGLES/ES2/gl.h>
 #import "VWWCubeScene.h"
@@ -35,6 +32,16 @@ const CGFloat kRotateZSensitivity = 0.25f;
 @property (nonatomic) CGPoint touchEnded;
 @property (nonatomic, retain) NSTimer* rotateTimer;
 @property (nonatomic, retain) VWWCubeScene* cubeScene;
+
+- (IBAction)diffuseSliderChanged:(id)sender;
+- (IBAction)ambientSliderChanged:(id)sender;
+- (IBAction)specularValueChanged:(id)sender;
+- (IBAction)shinyValueChanged:(id)sender;
+- (IBAction)cutoffValueChanged:(id)sender;
+- (IBAction)exponentValueChanged:(id)sender;
+- (IBAction)constantValueChanged:(id)sender;
+- (IBAction)linearValueChanged:(id)sender;
+- (IBAction)quadraticValueChanged:(id)sender;
 
 @end
 
@@ -162,5 +169,43 @@ const CGFloat kRotateZSensitivity = 0.25f;
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender magnetometerUpdated:(MotionDevice)device{
 }
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender gyroUpdated:(MotionDevice)device{
+}
+- (IBAction)diffuseSliderChanged:(id)sender {
+    UISlider* slider = (UISlider*)sender;
+    self.cubeScene.lightDiffuse = slider.value;
+}
+
+- (IBAction)ambientSliderChanged:(id)sender {
+    UISlider* slider = (UISlider*)sender;
+    self.cubeScene.lightAmbient = slider.value;
+}
+
+- (IBAction)specularValueChanged:(id)sender {
+    UISlider* slider = (UISlider*)sender;
+    self.cubeScene.lightSpecular = slider.value;
+}
+
+- (IBAction)shinyValueChanged:(id)sender {
+//    UISlider* slider = (UISlider*)sender;
+}
+
+- (IBAction)cutoffValueChanged:(id)sender {
+//    UISlider* slider = (UISlider*)sender;
+}
+
+- (IBAction)exponentValueChanged:(id)sender {
+//    UISlider* slider = (UISlider*)sender;
+}
+
+- (IBAction)constantValueChanged:(id)sender {
+//    UISlider* slider = (UISlider*)sender;
+}
+
+- (IBAction)linearValueChanged:(id)sender {
+//    UISlider* slider = (UISlider*)sender;
+}
+
+- (IBAction)quadraticValueChanged:(id)sender {
+//    UISlider* slider = (UISlider*)sender;
 }
 @end
