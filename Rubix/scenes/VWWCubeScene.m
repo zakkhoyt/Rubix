@@ -20,6 +20,7 @@ typedef struct {
     float Normal[3];
 } Vertex;
 
+
 const Vertex Vertices[] = {
     // Front
     {{1, -1, 1}, {1, 0, 0, 1}, {1, 0}, {0, 0, 1}},
@@ -77,50 +78,27 @@ const GLubyte Indices[] = {
 @property (nonatomic) GLuint vertexArray;
 @property (nonatomic) GLuint vertexBuffer;
 @property (nonatomic) GLuint indexBuffer;
-//@property (nonatomic) GLKMatrixStackRef modelview_stack;
 @property (nonatomic, retain) VWWCube* cube;
 @property (nonatomic, retain) GLKBaseEffect* effect;
-
 @end
 
 @implementation VWWCubeScene
 
-
 -(void)update {
-//    NSLog(@"%s", __FUNCTION__);
-
-//    float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
-//    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.0f, 50.0f);
-//    self.effect.transform.projectionMatrix = projectionMatrix;
-    
-    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -6.0);
-    modelViewMatrix = GLKMatrix4Translate(modelViewMatrix, _translateX, _translateY, _translateZ);
-    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(self.rotateY), 1, 0, 0);
-    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(self.rotateX), 0, 1, 0);
-    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(self.rotateZ), 0, 0, 1);
+    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -20.0);
+    modelViewMatrix = GLKMatrix4Translate(modelViewMatrix, self.translate.x, self.translate.y, self.translate.z);
+    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(-self.rotate.y), 1, 0, 0);
+    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(-self.rotate.x), 0, 1, 0);
+    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(self.rotate.z), 0, 0, 1);
     self.effect.transform.modelviewMatrix = modelViewMatrix;
-    
 }
 
 -(void)render {
-    
-//    NSLog(@"%s", __FUNCTION__);
-
-    
-    float r,g,b,a = 1.0;
-    [self.clearColor getRed:&r green:&g blue:&b alpha:&a];
-    glClearColor(r, g, b, a);
-    glClear(GL_COLOR_BUFFER_BIT);
-    
-    
     // Important! Must call any time you change proper-
     // ties on a GLKBaseEffect, before you draw with it.
     [self.effect prepareToDraw];
-    
-    
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
-    
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition,
                           3,
@@ -138,24 +116,16 @@ const GLubyte Indices[] = {
                           (const GLvoid *)
                           offsetof(Vertex, Color));
 #endif
-    
     glBindVertexArrayOES(_vertexArray);
     glDrawElements(GL_TRIANGLES,
                    sizeof(Indices)/sizeof(Indices[0]),
                    GL_UNSIGNED_BYTE, 0);
-    
-    
 }
 
-
-
 #pragma mark - OpenGLES stuff
-
 - (void)setupGL {
-//    NSLog(@"%s", __FUNCTION__);
     [EAGLContext setCurrentContext:self.context];
     self.effect = [[GLKBaseEffect alloc] init];
-    
     
 #if defined(VWW_CUBE_SCENE_GL_ENABLE_TEXTURES)
     NSDictionary * options = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -230,27 +200,16 @@ const GLubyte Indices[] = {
     self.effect.light0.position = GLKVector4Make(10, 10, -8, 1);
     self.effect.lightingType = GLKLightingTypePerPixel;
 #endif
-    
-    //    self.modelview_stack = GLKMatrixStackCreate(0);
-    //    GLKMatrixStackPush(self.modelview_stack);
-    
+ 
     float aspect = fabsf(self.bounds.size.width / self.bounds.size.height);
     GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.0f, 50.0f);
     self.effect.transform.projectionMatrix = projectionMatrix;
-    
 }
 
 - (void)tearDownGL {
-//    NSLog(@"%s", __FUNCTION__);
-
     [EAGLContext setCurrentContext:self.context];
-    
     glDeleteBuffers(1, &_vertexBuffer);
     glDeleteBuffers(1, &_indexBuffer);
-    
     [self.effect release];
-    
 }
-
-
 @end

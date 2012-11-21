@@ -39,7 +39,8 @@
 		C6CA7C33165C3D2700FA1AC6 /* VWWCubeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CA7C30165C3D2700FA1AC6 /* VWWCubeScene.m */; };
 		C6CA7C34165C3D2700FA1AC6 /* VWWScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CA7C32165C3D2700FA1AC6 /* VWWScene.m */; };
 		C6CA7C36165C3D4B00FA1AC6 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6CA7C35165C3D4B00FA1AC6 /* MainStoryboard_iPad.storyboard */; };
-		C6CA7C39165C4A0800FA1AC6 /* VWWRotatingTriangleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CA7C38165C4A0800FA1AC6 /* VWWRotatingTriangleScene.m */; };
+		C6E848B3165D508400BB94F1 /* VWWMultipleCubes.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848B2165D508400BB94F1 /* VWWMultipleCubes.m */; };
+		C6E848BA165D690400BB94F1 /* dev_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C6E848B9165D690400BB94F1 /* dev_notes.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,8 +95,9 @@
 		C6CA7C31165C3D2700FA1AC6 /* VWWScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWScene.h; sourceTree = "<group>"; };
 		C6CA7C32165C3D2700FA1AC6 /* VWWScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWScene.m; sourceTree = "<group>"; };
 		C6CA7C35165C3D4B00FA1AC6 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard_iPad.storyboard; path = storyboards/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		C6CA7C37165C4A0800FA1AC6 /* VWWRotatingTriangleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWRotatingTriangleScene.h; sourceTree = "<group>"; };
-		C6CA7C38165C4A0800FA1AC6 /* VWWRotatingTriangleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWRotatingTriangleScene.m; sourceTree = "<group>"; };
+		C6E848B1165D508400BB94F1 /* VWWMultipleCubes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWMultipleCubes.h; sourceTree = "<group>"; };
+		C6E848B2165D508400BB94F1 /* VWWMultipleCubes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWMultipleCubes.m; sourceTree = "<group>"; };
+		C6E848B9165D690400BB94F1 /* dev_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dev_notes.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,8 +167,8 @@
 			children = (
 				C678669216555B9200082C3C /* documentation */,
 				C6CA7C2A165C3A9F00FA1AC6 /* storyboards */,
-				C6CA7C2E165C3D2700FA1AC6 /* scenes */,
 				C6786662165324C300082C3C /* controllers */,
+				C6CA7C2E165C3D2700FA1AC6 /* scenes */,
 				C6786661165324BD00082C3C /* models */,
 				C67866261653249100082C3C /* Supporting Files */,
 				C6A40278165B0F510068D5FD /* textures */,
@@ -232,6 +234,7 @@
 		C678669216555B9200082C3C /* documentation */ = {
 			isa = PBXGroup;
 			children = (
+				C6E848B9165D690400BB94F1 /* dev_notes.txt */,
 			);
 			name = documentation;
 			sourceTree = "<group>";
@@ -265,8 +268,8 @@
 				C6CA7C32165C3D2700FA1AC6 /* VWWScene.m */,
 				C6CA7C2F165C3D2700FA1AC6 /* VWWCubeScene.h */,
 				C6CA7C30165C3D2700FA1AC6 /* VWWCubeScene.m */,
-				C6CA7C37165C4A0800FA1AC6 /* VWWRotatingTriangleScene.h */,
-				C6CA7C38165C4A0800FA1AC6 /* VWWRotatingTriangleScene.m */,
+				C6E848B1165D508400BB94F1 /* VWWMultipleCubes.h */,
+				C6E848B2165D508400BB94F1 /* VWWMultipleCubes.m */,
 			);
 			path = scenes;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				C6A9D380165B478B00BF3943 /* 3x3_05.png in Resources */,
 				C6A9D383165B488700BF3943 /* 3x3_00.png in Resources */,
 				C6CA7C36165C3D4B00FA1AC6 /* MainStoryboard_iPad.storyboard in Resources */,
+				C6E848BA165D690400BB94F1 /* dev_notes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +400,7 @@
 				C6073BFC16533B1A00277649 /* VWWMotionMonitor.m in Sources */,
 				C6CA7C33165C3D2700FA1AC6 /* VWWCubeScene.m in Sources */,
 				C6CA7C34165C3D2700FA1AC6 /* VWWScene.m in Sources */,
-				C6CA7C39165C4A0800FA1AC6 /* VWWRotatingTriangleScene.m in Sources */,
+				C6E848B3165D508400BB94F1 /* VWWMultipleCubes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

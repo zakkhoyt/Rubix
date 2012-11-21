@@ -17,6 +17,7 @@
 #import "VWWCube.h"
 #import "VWWMotionMonitor.h"
 
+
 const CGFloat kRotateXSensitivity = 0.25f;
 const CGFloat kRotateYSensitivity = 0.25f;
 const CGFloat kRotateZSensitivity = 0.25f;
@@ -31,7 +32,7 @@ const CGFloat kRotateZSensitivity = 0.25f;
 @property (nonatomic) CGPoint touchMoved;
 @property (nonatomic) CGPoint touchEnded;
 @property (nonatomic, retain) NSTimer* rotateTimer;
-@property (nonatomic, retain) VWWCubeScene* cubeScene;
+@property (nonatomic, retain) NSMutableArray* cubes;
 
 - (IBAction)diffuseSliderChanged:(id)sender;
 - (IBAction)ambientSliderChanged:(id)sender;
@@ -60,7 +61,8 @@ const CGFloat kRotateZSensitivity = 0.25f;
     [super viewDidLoad];
     [self createGLView];
     [self createCubeScene];
-    [self.cubeScene setupGL];
+
+    [self.cubes makeObjectsPerformSelector:@selector(setupGL)];
     [self.motionMonitor startAccelerometer];
     [self.motionMonitor startGyros];
     [self.motionMonitor startMagnetometer];
@@ -72,7 +74,7 @@ const CGFloat kRotateZSensitivity = 0.25f;
     [self.motionMonitor stopGyros];
     [self.motionMonitor stopMagnetometer];
     [super viewDidUnload];
-    [self.cubeScene tearDownGL];
+    [self.cubes makeObjectsPerformSelector:@selector(tearDownGL)];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -96,8 +98,9 @@ const CGFloat kRotateZSensitivity = 0.25f;
     self.touchMoved = [touch locationInView:nil];
     CGFloat rotateX = self.touchBegan.x - self.touchMoved.x;
     CGFloat rotateY = self.touchBegan.y - self.touchMoved.y;
-    self.cubeScene.rotateX = rotateX * -kRotateXSensitivity;
-    self.cubeScene.rotateY = rotateY * -kRotateYSensitivity;
+    for(VWWCubeScene* cube in self.cubes){
+        cube.rotate = GLKVector3Make(rotateX, rotateY, 0);
+    }
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     [self printMethod:(char*)__FUNCTION__ withTouches:touches withEvent:event];
@@ -129,7 +132,51 @@ const CGFloat kRotateZSensitivity = 0.25f;
 }
 
 -(void)createCubeScene{
-    self.cubeScene = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+    
+    self.cubes = [[NSMutableArray alloc] init];
+
+    float cubeWidth = 4.0;
+    float z = 1;
+    VWWCubeScene* cubes[28] = {};
+
+    cubes[0] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+    cubes[0].translate = GLKVector3Make(-cubeWidth, cubeWidth, z);
+    [self.cubes addObject:cubes[0]];
+
+    cubes[1] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+    cubes[1].translate = GLKVector3Make(0, cubeWidth, z);
+    [self.cubes addObject:cubes[1]];
+    
+    cubes[2] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+    cubes[2].translate = GLKVector3Make(cubeWidth, cubeWidth, z);
+    [self.cubes addObject:cubes[2]];
+    
+    cubes[3] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+    cubes[3].translate = GLKVector3Make(-cubeWidth, 0, z);
+    [self.cubes addObject:cubes[3]];
+    
+    cubes[4] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+    cubes[4].translate = GLKVector3Make(0, 0, z);
+    [self.cubes addObject:cubes[4]];
+    
+    cubes[5] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+    cubes[5].translate = GLKVector3Make(cubeWidth, 0, z);
+    [self.cubes addObject:cubes[5]];
+    
+    cubes[6] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+    cubes[6].translate = GLKVector3Make(-cubeWidth, -cubeWidth, z);
+    [self.cubes addObject:cubes[6]];
+    
+    cubes[7] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+    cubes[7].translate = GLKVector3Make(0, -cubeWidth, z);
+    [self.cubes addObject:cubes[7]];
+    
+    cubes[8] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+    cubes[8].translate = GLKVector3Make(cubeWidth, -cubeWidth, z);
+    [self.cubes addObject:cubes[8]];
+
+
+    
 }
 
 -(void)createGLView{
@@ -144,7 +191,9 @@ const CGFloat kRotateZSensitivity = 0.25f;
 #pragma mark - Implements GLKViewDelegate
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect{
-    [self.cubeScene render];
+    glClearColor(0,0,0,1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    [self.cubes makeObjectsPerformSelector:@selector(render)];
 }
 
 #pragma mark - Implements GLKViewControllerDelegate
@@ -157,7 +206,7 @@ const CGFloat kRotateZSensitivity = 0.25f;
 }
 
 - (void)update{
-    [self.cubeScene update];
+    [self.cubes makeObjectsPerformSelector:@selector(update)];
 }
 
 
@@ -172,17 +221,17 @@ const CGFloat kRotateZSensitivity = 0.25f;
 }
 - (IBAction)diffuseSliderChanged:(id)sender {
     UISlider* slider = (UISlider*)sender;
-    self.cubeScene.lightDiffuse = slider.value;
+//    self.cubeScene.lightDiffuse = slider.value;
 }
 
 - (IBAction)ambientSliderChanged:(id)sender {
     UISlider* slider = (UISlider*)sender;
-    self.cubeScene.lightAmbient = slider.value;
+//  self.cubeScene.lightAmbient = slider.value;
 }
 
 - (IBAction)specularValueChanged:(id)sender {
     UISlider* slider = (UISlider*)sender;
-    self.cubeScene.lightSpecular = slider.value;
+//    self.cubeScene.lightSpecular = slider.value;
 }
 
 - (IBAction)shinyValueChanged:(id)sender {

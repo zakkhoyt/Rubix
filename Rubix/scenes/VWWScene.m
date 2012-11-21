@@ -20,7 +20,6 @@
     if(self){
         self.bounds = frame;
         self.context = context;
-        self.clearColor = [UIColor blackColor];
     }
     return self;
 }

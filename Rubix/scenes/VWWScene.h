@@ -20,7 +20,6 @@
 
 @interface VWWScene : NSObject 
 @property (nonatomic, retain) EAGLContext* context;
-@property (nonatomic, retain) UIColor* clearColor;
 @property (nonatomic) CGRect bounds;
 -(id)initWithFrame:(CGRect)frame context:(EAGLContext *)context;
 -(void)render;
