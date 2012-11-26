@@ -23,7 +23,6 @@
 		C67866481653249100082C3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678661F1653249100082C3C /* UIKit.framework */; };
 		C67866491653249100082C3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866211653249100082C3C /* Foundation.framework */; };
 		C67866511653249100082C3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C678664F1653249100082C3C /* InfoPlist.strings */; };
-		C67866541653249100082C3C /* RubixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C67866531653249100082C3C /* RubixTests.m */; };
 		C67866651653255B00082C3C /* VWWCube.m in Sources */ = {isa = PBXBuildFile; fileRef = C67866641653255B00082C3C /* VWWCube.m */; };
 		C67866661653255B00082C3C /* VWWCube.m in Sources */ = {isa = PBXBuildFile; fileRef = C67866641653255B00082C3C /* VWWCube.m */; };
 		C678666D1653272000082C3C /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678666A1653272000082C3C /* GLKit.framework */; };
@@ -41,6 +40,11 @@
 		C6CA7C36165C3D4B00FA1AC6 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6CA7C35165C3D4B00FA1AC6 /* MainStoryboard_iPad.storyboard */; };
 		C6E848B3165D508400BB94F1 /* VWWMultipleCubes.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848B2165D508400BB94F1 /* VWWMultipleCubes.m */; };
 		C6E848BA165D690400BB94F1 /* dev_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C6E848B9165D690400BB94F1 /* dev_notes.txt */; };
+		C6E848C51663E63800BB94F1 /* VWWCubeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848C41663E63800BB94F1 /* VWWCubeModel.m */; };
+		C6E848C91663ED9000BB94F1 /* VWWSquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */; };
+		C6E848CF1663F1C600BB94F1 /* VWWSquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */; };
+		C6E848D01663F1C600BB94F1 /* VWWCubeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848C41663E63800BB94F1 /* VWWCubeModel.m */; };
+		C6E848DA1663F5A700BB94F1 /* VWWCubeModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848D91663F5A700BB94F1 /* VWWCubeModelTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +102,12 @@
 		C6E848B1165D508400BB94F1 /* VWWMultipleCubes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWMultipleCubes.h; sourceTree = "<group>"; };
 		C6E848B2165D508400BB94F1 /* VWWMultipleCubes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWMultipleCubes.m; sourceTree = "<group>"; };
 		C6E848B9165D690400BB94F1 /* dev_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dev_notes.txt; sourceTree = "<group>"; };
+		C6E848C31663E63800BB94F1 /* VWWCubeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWCubeModel.h; path = models/VWWCubeModel.h; sourceTree = "<group>"; };
+		C6E848C41663E63800BB94F1 /* VWWCubeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWCubeModel.m; path = models/VWWCubeModel.m; sourceTree = "<group>"; };
+		C6E848C71663ED9000BB94F1 /* VWWSquareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWSquareModel.h; path = models/VWWSquareModel.h; sourceTree = "<group>"; };
+		C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWSquareModel.m; path = models/VWWSquareModel.m; sourceTree = "<group>"; };
+		C6E848D81663F5A700BB94F1 /* VWWCubeModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCubeModelTests.h; sourceTree = "<group>"; };
+		C6E848D91663F5A700BB94F1 /* VWWCubeModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCubeModelTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,9 +205,11 @@
 		C678664C1653249100082C3C /* RubixTests */ = {
 			isa = PBXGroup;
 			children = (
+				C678664D1653249100082C3C /* Supporting Files */,
 				C67866521653249100082C3C /* RubixTests.h */,
 				C67866531653249100082C3C /* RubixTests.m */,
-				C678664D1653249100082C3C /* Supporting Files */,
+				C6E848D81663F5A700BB94F1 /* VWWCubeModelTests.h */,
+				C6E848D91663F5A700BB94F1 /* VWWCubeModelTests.m */,
 			);
 			path = RubixTests;
 			sourceTree = "<group>";
@@ -214,8 +226,8 @@
 		C6786661165324BD00082C3C /* models */ = {
 			isa = PBXGroup;
 			children = (
-				C67866631653255B00082C3C /* VWWCube.h */,
-				C67866641653255B00082C3C /* VWWCube.m */,
+				C6E848CB1663EE0600BB94F1 /* objective-c */,
+				C6E848CA1663EE0000BB94F1 /* c */,
 				C6073BFA16533B1A00277649 /* VWWMotionMonitor.h */,
 				C6073BFB16533B1A00277649 /* VWWMotionMonitor.m */,
 			);
@@ -272,6 +284,26 @@
 				C6E848B2165D508400BB94F1 /* VWWMultipleCubes.m */,
 			);
 			path = scenes;
+			sourceTree = "<group>";
+		};
+		C6E848CA1663EE0000BB94F1 /* c */ = {
+			isa = PBXGroup;
+			children = (
+				C67866631653255B00082C3C /* VWWCube.h */,
+				C67866641653255B00082C3C /* VWWCube.m */,
+			);
+			name = c;
+			sourceTree = "<group>";
+		};
+		C6E848CB1663EE0600BB94F1 /* objective-c */ = {
+			isa = PBXGroup;
+			children = (
+				C6E848C71663ED9000BB94F1 /* VWWSquareModel.h */,
+				C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */,
+				C6E848C31663E63800BB94F1 /* VWWCubeModel.h */,
+				C6E848C41663E63800BB94F1 /* VWWCubeModel.m */,
+			);
+			name = "objective-c";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,6 +433,8 @@
 				C6CA7C33165C3D2700FA1AC6 /* VWWCubeScene.m in Sources */,
 				C6CA7C34165C3D2700FA1AC6 /* VWWScene.m in Sources */,
 				C6E848B3165D508400BB94F1 /* VWWMultipleCubes.m in Sources */,
+				C6E848C51663E63800BB94F1 /* VWWCubeModel.m in Sources */,
+				C6E848C91663ED9000BB94F1 /* VWWSquareModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,8 +442,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C67866541653249100082C3C /* RubixTests.m in Sources */,
 				C67866661653255B00082C3C /* VWWCube.m in Sources */,
+				C6E848CF1663F1C600BB94F1 /* VWWSquareModel.m in Sources */,
+				C6E848D01663F1C600BB94F1 /* VWWCubeModel.m in Sources */,
+				C6E848DA1663F5A700BB94F1 /* VWWCubeModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
