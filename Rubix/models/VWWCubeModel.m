@@ -22,6 +22,9 @@
     return [self initWithSize:VWW_DEFAULT_CUBE_SIZE];
 }
 
+
+#pragma mark - Custom methods (public) 
+
 // Allocate a new cube with <size> cubes per side;
 -(id)initWithSize:(NSUInteger)size{
     self = [super init];
@@ -62,59 +65,43 @@
 
 // Mess the cube up. Give it some random twists;
 -(void)jumbleWithIntensity:(NSUInteger)intensity{
-    
+    NSLog(@"ERROR occurred at %s:%s:%d", __FILE__, __FUNCTION__, __LINE__);
+    NSLog(@"Child class must implement this method");
+    assert(NO);
 }
 
 // Print the cube data to the console
 -(void)printCube{
-
-
-    
-//    
-//    NSMutableArray* faceArray = [[NSMutableArray alloc]initWithCapacity:self.squaresPerColor * 6];
-//    for(NSUInteger li = 0; li < self.li * 6; face++){
-//
-//    }
-
-    
-//    // sort by face
-//    [self.squares sortUsingComparator:^(id obj1, id obj2) {
-//        VWWSquareModel* square1 = (VWWSquareModel*)obj1;
-//        VWWSquareModel* square2 = (VWWSquareModel*)obj2;
-//        return square1.valueForFace < square2.valueForFace ? NSOrderedAscending : NSOrderedDescending;
-//
-//    }];
-//
-
-//
-//    // sort by value
-//    [self.squares sortUsingComparator:^(id obj1, id obj2) {
-//        VWWSquareModel* square1 = (VWWSquareModel*)obj1;
-//        VWWSquareModel* square2 = (VWWSquareModel*)obj2;
-//        return square1.location < square2.location ? NSOrderedAscending : NSOrderedDescending;
-//        
-//    }];
-    
-//    // sort by color
-//    [self.squares sortUsingComparator:^(id obj1, id obj2) {
-//        VWWSquareModel* square1 = (VWWSquareModel*)obj1;
-//        VWWSquareModel* square2 = (VWWSquareModel*)obj2;
-//        return square1.valueForColor < square2.valueForColor ? NSOrderedAscending : NSOrderedDescending;
-//    }];
-//    // Now that they are sorted by color we can sort by order
-//    NSMutableArray* blueArray = [[NSMutableArray alloc]initWithCapacity:self.squaresPerColor];
-//    NSMutableArray* greenArray = [[NSMutableArray alloc]initWithCapacity:self.squaresPerColor];
-//    NSMutableArray* orangeArray = [[NSMutableArray alloc]initWithCapacity:self.squaresPerColor];
-//    NSMutableArray* redArray = [[NSMutableArray alloc]initWithCapacity:self.squaresPerColor];
-//    NSMutableArray* whiteArray = [[NSMutableArray alloc]initWithCapacity:self.squaresPerColor];
-//    NSMutableArray* yellowArray = [[NSMutableArray alloc]initWithCapacity:self.squaresPerColor];
-//    
-//    for(NSUInteger index = 0; index < self.squaresPerColor * 6; index++){
-//        NSLog(@"%@", [self.squares objectAtIndex:index]);
-//    }
+    for(NSUInteger index = 0; index < self.squaresPerColor * 6; index++){
+        NSLog(@"%@", [self.squares objectAtIndex:index]);
+    }
 }
 
 
+-(void)sortSquaresByFaceAndLocation{
+    const NSUInteger kNumFaces = 6;
+    NSMutableArray* faces[kNumFaces];
+
+    [self breakSquaresIntoFaceArraysFront:&faces[0]
+                                    right:&faces[1]
+                                     back:&faces[2]
+                                     left:&faces[3]
+                                      top:&faces[4]
+                                   bottom:&faces[5]];
+    
+    [self.squares removeAllObjects];
+    for(NSUInteger index = 0; index < kNumFaces; index++){
+        [faces[index] sortUsingComparator:^(id obj1, id obj2) {
+            VWWSquareModel* square1 = (VWWSquareModel*)obj1;
+            VWWSquareModel* square2 = (VWWSquareModel*)obj2;
+            return square1.location < square2.location ? NSOrderedAscending : NSOrderedDescending;
+        }];
+        [self.squares addObjectsFromArray:faces[index]];
+    }
+}
+
+
+#pragma mark - Custom methods (private) 
 -(void)breakSquaresIntoColorArraysBlue:(NSMutableArray**)blue
                                  green:(NSMutableArray**)green
                                 orange:(NSMutableArray**)orange
@@ -148,6 +135,8 @@
 
 }
 
+
+
 -(void)breakSquaresIntoFaceArraysFront:(NSMutableArray**)front
                                  right:(NSMutableArray**)right
                                   back:(NSMutableArray**)back
@@ -177,6 +166,9 @@
         [*top addObject:[self.squares objectAtIndex:4 * self.squaresPerColor + index]];
         [*bottom addObject:[self.squares objectAtIndex:5 * self.squaresPerColor + index]];
     }
-    
 }
+
+
+
+
 @end

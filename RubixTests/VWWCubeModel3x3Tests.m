@@ -55,18 +55,18 @@
     [super tearDown];
 }
 
+
 - (void)testCubeAllocation{
     [self printMethod:(char*)__FUNCTION__];
     NSLog(@"Beginning state");
     STAssertTrue([self examineCubeExpectSolved:YES], nil);
 }
 
-- (void)testCubeRotations{
+-(void)testCubeSorting{
     [self printMethod:(char*)__FUNCTION__];
-    
-    [self printSeparator:@"Beginning state"];
-    STAssertTrue([self examineCubeExpectSolved:YES], nil);
-    [_cube printCube];
+    NSLog(@"Sorting squares by face and location");
+    [self.cube sortSquaresByFaceAndLocation];
+    [self.cube printCube];
 }
 
 

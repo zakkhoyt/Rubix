@@ -13,7 +13,6 @@
 		C60CA06F16645B4E0067B174 /* VWWCube.m in Sources */ = {isa = PBXBuildFile; fileRef = C60CA06D16645B4A0067B174 /* VWWCube.m */; };
 		C60CA07A166470890067B174 /* VWWCubeModel3x3.m in Sources */ = {isa = PBXBuildFile; fileRef = C60CA079166470890067B174 /* VWWCubeModel3x3.m */; };
 		C60CA07B166470890067B174 /* VWWCubeModel3x3.m in Sources */ = {isa = PBXBuildFile; fileRef = C60CA079166470890067B174 /* VWWCubeModel3x3.m */; };
-		C60FE5E01664863C00D55C2D /* VWWCubeModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848D91663F5A700BB94F1 /* VWWCubeModelTests.m */; };
 		C67866201653249100082C3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678661F1653249100082C3C /* UIKit.framework */; };
 		C67866221653249100082C3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866211653249100082C3C /* Foundation.framework */; };
 		C67866241653249100082C3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866231653249100082C3C /* CoreGraphics.framework */; };
@@ -47,6 +46,13 @@
 		C6E848C91663ED9000BB94F1 /* VWWSquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */; };
 		C6E848CF1663F1C600BB94F1 /* VWWSquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */; };
 		C6E848D01663F1C600BB94F1 /* VWWCubeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848C41663E63800BB94F1 /* VWWCubeModel.m */; };
+		C6E848F016653A1600BB94F1 /* VWWCubeModel3x3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = C60FE5DA166475ED00D55C2D /* VWWCubeModel3x3Tests.m */; };
+		C6E848F316653B0800BB94F1 /* VWWCubeModel2x2.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848F216653B0800BB94F1 /* VWWCubeModel2x2.m */; };
+		C6E848F416653B0800BB94F1 /* VWWCubeModel2x2.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848F216653B0800BB94F1 /* VWWCubeModel2x2.m */; };
+		C6E848F816653B2400BB94F1 /* VWWCubeModel4x4.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848F716653B2400BB94F1 /* VWWCubeModel4x4.m */; };
+		C6E848F916653B2400BB94F1 /* VWWCubeModel4x4.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848F716653B2400BB94F1 /* VWWCubeModel4x4.m */; };
+		C6E848FC16653B3700BB94F1 /* VWWCubeModel5x5.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848FB16653B3700BB94F1 /* VWWCubeModel5x5.m */; };
+		C6E848FD16653B3700BB94F1 /* VWWCubeModel5x5.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848FB16653B3700BB94F1 /* VWWCubeModel5x5.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +120,12 @@
 		C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWSquareModel.m; path = models/VWWSquareModel.m; sourceTree = "<group>"; };
 		C6E848D81663F5A700BB94F1 /* VWWCubeModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCubeModelTests.h; sourceTree = "<group>"; };
 		C6E848D91663F5A700BB94F1 /* VWWCubeModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCubeModelTests.m; sourceTree = "<group>"; };
+		C6E848F116653B0700BB94F1 /* VWWCubeModel2x2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWCubeModel2x2.h; path = models/VWWCubeModel2x2.h; sourceTree = "<group>"; };
+		C6E848F216653B0800BB94F1 /* VWWCubeModel2x2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWCubeModel2x2.m; path = models/VWWCubeModel2x2.m; sourceTree = "<group>"; };
+		C6E848F616653B2400BB94F1 /* VWWCubeModel4x4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWCubeModel4x4.h; path = models/VWWCubeModel4x4.h; sourceTree = "<group>"; };
+		C6E848F716653B2400BB94F1 /* VWWCubeModel4x4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWCubeModel4x4.m; path = models/VWWCubeModel4x4.m; sourceTree = "<group>"; };
+		C6E848FA16653B3700BB94F1 /* VWWCubeModel5x5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWCubeModel5x5.h; path = models/VWWCubeModel5x5.h; sourceTree = "<group>"; };
+		C6E848FB16653B3700BB94F1 /* VWWCubeModel5x5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWCubeModel5x5.m; path = models/VWWCubeModel5x5.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,8 +322,14 @@
 				C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */,
 				C6E848C31663E63800BB94F1 /* VWWCubeModel.h */,
 				C6E848C41663E63800BB94F1 /* VWWCubeModel.m */,
+				C6E848F116653B0700BB94F1 /* VWWCubeModel2x2.h */,
+				C6E848F216653B0800BB94F1 /* VWWCubeModel2x2.m */,
 				C60CA078166470790067B174 /* VWWCubeModel3x3.h */,
 				C60CA079166470890067B174 /* VWWCubeModel3x3.m */,
+				C6E848F616653B2400BB94F1 /* VWWCubeModel4x4.h */,
+				C6E848F716653B2400BB94F1 /* VWWCubeModel4x4.m */,
+				C6E848FA16653B3700BB94F1 /* VWWCubeModel5x5.h */,
+				C6E848FB16653B3700BB94F1 /* VWWCubeModel5x5.m */,
 			);
 			name = "objective-c";
 			sourceTree = "<group>";
@@ -446,6 +464,9 @@
 				C6E848C91663ED9000BB94F1 /* VWWSquareModel.m in Sources */,
 				C60CA06E16645B4A0067B174 /* VWWCube.m in Sources */,
 				C60CA07A166470890067B174 /* VWWCubeModel3x3.m in Sources */,
+				C6E848F316653B0800BB94F1 /* VWWCubeModel2x2.m in Sources */,
+				C6E848F816653B2400BB94F1 /* VWWCubeModel4x4.m in Sources */,
+				C6E848FC16653B3700BB94F1 /* VWWCubeModel5x5.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +478,10 @@
 				C6E848D01663F1C600BB94F1 /* VWWCubeModel.m in Sources */,
 				C60CA06F16645B4E0067B174 /* VWWCube.m in Sources */,
 				C60CA07B166470890067B174 /* VWWCubeModel3x3.m in Sources */,
-				C60FE5E01664863C00D55C2D /* VWWCubeModelTests.m in Sources */,
+				C6E848F016653A1600BB94F1 /* VWWCubeModel3x3Tests.m in Sources */,
+				C6E848F416653B0800BB94F1 /* VWWCubeModel2x2.m in Sources */,
+				C6E848F916653B2400BB94F1 /* VWWCubeModel4x4.m in Sources */,
+				C6E848FD16653B3700BB94F1 /* VWWCubeModel5x5.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

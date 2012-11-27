@@ -52,68 +52,80 @@
     [super tearDown];
 }
 
+
 - (void)testCubeAllocation{
     [self printMethod:(char*)__FUNCTION__];
     NSLog(@"Beginning state");
     STAssertTrue([self examineCubeExpectSolved:YES], nil);
 }
 
-- (void)testCubeRotations{
+-(void)testCubeSorting{
     [self printMethod:(char*)__FUNCTION__];
-    
-    [self printSeparator:@"Beginning state"];
-    STAssertTrue([self examineCubeExpectSolved:YES], nil);
+    NSLog(@"Sorting squares by face and location");
+    [_cube sortSquaresByFaceAndLocation];
     [_cube printCube];
 }
 
-- (void)testColorSplit{
-    [self printMethod:(char*)__FUNCTION__];
-    NSMutableArray* blue = nil;
-    NSMutableArray* green = nil;
-    NSMutableArray* orange = nil;
-    NSMutableArray* red = nil;
-    NSMutableArray* white = nil;
-    NSMutableArray* yellow = nil;
-    
-    [_cube breakSquaresIntoColorArraysBlue:&blue
-                                     green:&green
-                                    orange:&orange
-                                       red:&red
-                                     white:&white
-                                    yellow:&yellow];
-    
-    NSLog(@"blue=%@", blue);
-    NSLog(@"green=%@", green);
-    NSLog(@"orange=%@", orange);
-    NSLog(@"red=%@", red);
-    NSLog(@"white=%@", white);
-    NSLog(@"yellow=%@", yellow);
-}
+//- (void)testCubeRotations{
+//    [self printMethod:(char*)__FUNCTION__];
+//    
+//    [self printSeparator:@"Beginning state"];
+//    STAssertTrue([self examineCubeExpectSolved:YES], nil);
+//    [_cube printCube];
+//}
 
-- (void)testFaceSplit{
-    [self printMethod:(char*)__FUNCTION__];
-    NSMutableArray* blue = nil;
-    NSMutableArray* green = nil;
-    NSMutableArray* orange = nil;
-    NSMutableArray* red = nil;
-    NSMutableArray* white = nil;
-    NSMutableArray* yellow = nil;
-    
-    [_cube breakSquaresIntoFaceArraysFront:&blue
-                                    right:&green
-                                   back:&orange
-                                      left:&red
-                                    top:&white
-                                   bottom:&yellow];
-    
-    NSLog(@"blue=%@", blue);
-    NSLog(@"green=%@", green);
-    NSLog(@"orange=%@", orange);
-    NSLog(@"red=%@", red);
-    NSLog(@"white=%@", white);
-    NSLog(@"yellow=%@", yellow);
-}
 
+
+//// ********************************************* Test below here are for testing
+//// ********************************************* methods that are now private
+//- (void)testColorSplit{
+//    [self printMethod:(char*)__FUNCTION__];
+//    NSMutableArray* blue = nil;
+//    NSMutableArray* green = nil;
+//    NSMutableArray* orange = nil;
+//    NSMutableArray* red = nil;
+//    NSMutableArray* white = nil;
+//    NSMutableArray* yellow = nil;
+//    
+//    [_cube breakSquaresIntoColorArraysBlue:&blue
+//                                     green:&green
+//                                    orange:&orange
+//                                       red:&red
+//                                     white:&white
+//                                    yellow:&yellow];
+//    
+//    NSLog(@"blue=%@", blue);
+//    NSLog(@"green=%@", green);
+//    NSLog(@"orange=%@", orange);
+//    NSLog(@"red=%@", red);
+//    NSLog(@"white=%@", white);
+//    NSLog(@"yellow=%@", yellow);
+//}
+//
+//- (void)testFaceSplit{
+//    [self printMethod:(char*)__FUNCTION__];
+//    NSMutableArray* blue = nil;
+//    NSMutableArray* green = nil;
+//    NSMutableArray* orange = nil;
+//    NSMutableArray* red = nil;
+//    NSMutableArray* white = nil;
+//    NSMutableArray* yellow = nil;
+//    
+//    [_cube breakSquaresIntoFaceArraysFront:&blue
+//                                    right:&green
+//                                   back:&orange
+//                                      left:&red
+//                                    top:&white
+//                                   bottom:&yellow];
+//    
+//    NSLog(@"blue=%@", blue);
+//    NSLog(@"green=%@", green);
+//    NSLog(@"orange=%@", orange);
+//    NSLog(@"red=%@", red);
+//    NSLog(@"white=%@", white);
+//    NSLog(@"yellow=%@", yellow);
+//}
+//
 
 
 @end

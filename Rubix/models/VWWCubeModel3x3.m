@@ -11,7 +11,7 @@
 @implementation VWWCubeModel3x3
 
 // Perform a rotation
--(void)rotateSlice:(VWWRotation)rotate{
+-(void)rotateSlice:(VWWRotate3x3)rotate{
     
 }
 

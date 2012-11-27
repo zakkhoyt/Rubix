@@ -9,20 +9,19 @@
 #import "VWWCubeModel.h"
 
 typedef enum{
-    VWWRotationFront = 0,
-    VWWRotationFrontPrime,
-    VWWRotationRight,
-    VWWRotationRightPrime,
-    VWWRotationBack,
-    VWWRotationBackPrime,
-    VWWRotationLeft,
-    VWWRotationLeftPrime,
-    VWWRotationTop,
-    VWWRotationTopPrime,
-} VWWRotation;
+    VWWRotate3x3Front = 0,
+    VWWRotate3x3FrontPrime,
+    VWWRotate3x3Right,
+    VWWRotate3x3RightPrime,
+    VWWRotate3x3Back,
+    VWWRotate3x3BackPrime,
+    VWWRotate3x3Left,
+    VWWRotate3x3LeftPrime,
+    VWWRotate3x3Top,
+    VWWRotate3x3TopPrime,
+} VWWRotate3x3;
 
 
 @interface VWWCubeModel3x3 : VWWCubeModel
-// Perform a rotation
--(void)rotateSlice:(VWWRotation)rotate;
+-(void)rotateSlice:(VWWRotate3x3)rotate;
 @end

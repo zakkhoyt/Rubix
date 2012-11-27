@@ -40,6 +40,23 @@
 // Allocate a new cube with <size> cubes per side;
 -(id)initWithSize:(NSUInteger)size;
 
+
+//-(void)breakSquaresIntoColorArraysBlue:(NSMutableArray**)blue
+//                                 green:(NSMutableArray**)green
+//                                orange:(NSMutableArray**)orange
+//                                   red:(NSMutableArray**)red
+//                                 white:(NSMutableArray**)white
+//                                yellow:(NSMutableArray**)yellow;
+//
+//-(void)breakSquaresIntoFaceArraysFront:(NSMutableArray**)front
+//                                 right:(NSMutableArray**)right
+//                                  back:(NSMutableArray**)back
+//                                  left:(NSMutableArray**)left
+//                                   top:(NSMutableArray**)top
+//                                bottom:(NSMutableArray**)bottom;
+
+
+
 // Checks if each side of the cube is a solid color. Doesn't matter which
 -(bool)isSolved;
 
@@ -51,19 +68,6 @@
 -(void)printCube;
 
 
--(void)breakSquaresIntoColorArraysBlue:(NSMutableArray**)blue
-                                 green:(NSMutableArray**)green
-                                orange:(NSMutableArray**)orange
-                                   red:(NSMutableArray**)red
-                                 white:(NSMutableArray**)white
-                                yellow:(NSMutableArray**)yellow;
-
--(void)breakSquaresIntoFaceArraysFront:(NSMutableArray**)front
-                                 right:(NSMutableArray**)right
-                                  back:(NSMutableArray**)back
-                                  left:(NSMutableArray**)left
-                                   top:(NSMutableArray**)top
-                                bottom:(NSMutableArray**)bottom;
-
+-(void)sortSquaresByFaceAndLocation;
 
 @end
