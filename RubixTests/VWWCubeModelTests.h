@@ -7,7 +7,15 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "VWWCubeModel.h"
 
 @interface VWWCubeModelTests : SenTestCase
 
+@end
+
+@interface VWWCubeModelTests (helpers)
+-(void)printSeparator;
+-(void)printSeparator:(NSString*)message;
+-(void)printMethod:(char*)method;
+-(bool)examineCubeExpectSolved:(VWWCubeModel*)cube expectSolved:(bool)expectSolved;
 @end

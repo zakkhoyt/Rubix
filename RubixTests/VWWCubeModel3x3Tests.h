@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Zakk Hoyt. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import "VWWCubeModelTests.h"
 
-@interface VWWCubeModel3x3Tests : SenTestCase
+@interface VWWCubeModel3x3Tests : VWWCubeModelTests
 
 @end

@@ -70,13 +70,43 @@
     assert(NO);
 }
 
-// Print the cube data to the console
+// Print a short representation of the cube
 -(void)printCube{
+    const NSUInteger kNumSides = 6;
+    NSMutableString* cubeString = [NSMutableString new];
+    NSMutableString* rowString = [NSMutableString new];
+    [cubeString setString:@"Current cube state:\n"];
+    [self sortSquaresByFaceAndLocation];
+    VWWSquareModel* square = nil;
+    NSUInteger squareIndex = 0;
+    for(NSUInteger f = 0; f < kNumSides; f++){
+        // Get the face name and print it
+        squareIndex = f * self.squaresPerColor;
+        square  = [self.squares objectAtIndex:squareIndex];
+        [cubeString appendFormat:@"---- %@ ----\n", square.stringForFace];
+        
+        for(NSUInteger y = 0; y < self.cubeSize; y++){
+            for(NSUInteger x = 0; x < self.cubeSize; x++){
+                // Get the color of the square and append it to rowString
+                squareIndex = f * self.squaresPerColor + y * self.cubeSize + x;
+                square = [self.squares objectAtIndex:squareIndex];
+                [rowString appendFormat:@"%c", square.charForColor];
+            }
+            [cubeString appendFormat:@"%@\n", rowString];
+            [rowString setString:@""];
+        }
+    }
+    [cubeString appendString:@"----------------"];
+    NSLog(@"%@", cubeString);
+}
+
+
+// Print the cube data to the console
+-(void)printCubeVerbose{
     for(NSUInteger index = 0; index < self.squaresPerColor * 6; index++){
         NSLog(@"%@", [self.squares objectAtIndex:index]);
     }
 }
-
 
 -(void)sortSquaresByFaceAndLocation{
     const NSUInteger kNumFaces = 6;

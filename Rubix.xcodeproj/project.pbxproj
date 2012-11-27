@@ -46,13 +46,14 @@
 		C6E848C91663ED9000BB94F1 /* VWWSquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */; };
 		C6E848CF1663F1C600BB94F1 /* VWWSquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */; };
 		C6E848D01663F1C600BB94F1 /* VWWCubeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848C41663E63800BB94F1 /* VWWCubeModel.m */; };
-		C6E848F016653A1600BB94F1 /* VWWCubeModel3x3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = C60FE5DA166475ED00D55C2D /* VWWCubeModel3x3Tests.m */; };
 		C6E848F316653B0800BB94F1 /* VWWCubeModel2x2.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848F216653B0800BB94F1 /* VWWCubeModel2x2.m */; };
 		C6E848F416653B0800BB94F1 /* VWWCubeModel2x2.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848F216653B0800BB94F1 /* VWWCubeModel2x2.m */; };
 		C6E848F816653B2400BB94F1 /* VWWCubeModel4x4.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848F716653B2400BB94F1 /* VWWCubeModel4x4.m */; };
 		C6E848F916653B2400BB94F1 /* VWWCubeModel4x4.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848F716653B2400BB94F1 /* VWWCubeModel4x4.m */; };
 		C6E848FC16653B3700BB94F1 /* VWWCubeModel5x5.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848FB16653B3700BB94F1 /* VWWCubeModel5x5.m */; };
 		C6E848FD16653B3700BB94F1 /* VWWCubeModel5x5.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848FB16653B3700BB94F1 /* VWWCubeModel5x5.m */; };
+		C6E84910166558E000BB94F1 /* VWWCubeModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848D91663F5A700BB94F1 /* VWWCubeModelTests.m */; };
+		C6E8491716655C6500BB94F1 /* VWWCubeModel3x3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = C60FE5DA166475ED00D55C2D /* VWWCubeModel3x3Tests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,12 @@
 		C6E848F716653B2400BB94F1 /* VWWCubeModel4x4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWCubeModel4x4.m; path = models/VWWCubeModel4x4.m; sourceTree = "<group>"; };
 		C6E848FA16653B3700BB94F1 /* VWWCubeModel5x5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWCubeModel5x5.h; path = models/VWWCubeModel5x5.h; sourceTree = "<group>"; };
 		C6E848FB16653B3700BB94F1 /* VWWCubeModel5x5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWCubeModel5x5.m; path = models/VWWCubeModel5x5.m; sourceTree = "<group>"; };
+		C6E84904166555B400BB94F1 /* VWWCubeModel2x2Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCubeModel2x2Tests.h; sourceTree = "<group>"; };
+		C6E84905166555B400BB94F1 /* VWWCubeModel2x2Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCubeModel2x2Tests.m; sourceTree = "<group>"; };
+		C6E849071665561900BB94F1 /* VWWCubeModel4x4Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCubeModel4x4Tests.h; sourceTree = "<group>"; };
+		C6E849081665561900BB94F1 /* VWWCubeModel4x4Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCubeModel4x4Tests.m; sourceTree = "<group>"; };
+		C6E8490A1665566700BB94F1 /* VWWCubeModel5x5Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCubeModel5x5Tests.h; sourceTree = "<group>"; };
+		C6E8490B1665566700BB94F1 /* VWWCubeModel5x5Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCubeModel5x5Tests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,13 +230,9 @@
 		C678664C1653249100082C3C /* RubixTests */ = {
 			isa = PBXGroup;
 			children = (
+				C6E8491916655C7E00BB94F1 /* passive */,
+				C6E8491816655C7500BB94F1 /* active */,
 				C678664D1653249100082C3C /* Supporting Files */,
-				C67866521653249100082C3C /* RubixTests.h */,
-				C67866531653249100082C3C /* RubixTests.m */,
-				C6E848D81663F5A700BB94F1 /* VWWCubeModelTests.h */,
-				C6E848D91663F5A700BB94F1 /* VWWCubeModelTests.m */,
-				C60FE5D9166475ED00D55C2D /* VWWCubeModel3x3Tests.h */,
-				C60FE5DA166475ED00D55C2D /* VWWCubeModel3x3Tests.m */,
 			);
 			path = RubixTests;
 			sourceTree = "<group>";
@@ -246,8 +249,8 @@
 		C6786661165324BD00082C3C /* models */ = {
 			isa = PBXGroup;
 			children = (
-				C6E848CB1663EE0600BB94F1 /* objective-c */,
 				C6E848CA1663EE0000BB94F1 /* c */,
+				C6E848CB1663EE0600BB94F1 /* objective-c */,
 				C6073BFA16533B1A00277649 /* VWWMotionMonitor.h */,
 				C6073BFB16533B1A00277649 /* VWWMotionMonitor.m */,
 			);
@@ -318,20 +321,78 @@
 		C6E848CB1663EE0600BB94F1 /* objective-c */ = {
 			isa = PBXGroup;
 			children = (
+				C6E8491116655C0F00BB94F1 /* ToBeImplemented */,
 				C6E848C71663ED9000BB94F1 /* VWWSquareModel.h */,
 				C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */,
 				C6E848C31663E63800BB94F1 /* VWWCubeModel.h */,
 				C6E848C41663E63800BB94F1 /* VWWCubeModel.m */,
-				C6E848F116653B0700BB94F1 /* VWWCubeModel2x2.h */,
-				C6E848F216653B0800BB94F1 /* VWWCubeModel2x2.m */,
 				C60CA078166470790067B174 /* VWWCubeModel3x3.h */,
 				C60CA079166470890067B174 /* VWWCubeModel3x3.m */,
+			);
+			name = "objective-c";
+			sourceTree = "<group>";
+		};
+		C6E8491116655C0F00BB94F1 /* ToBeImplemented */ = {
+			isa = PBXGroup;
+			children = (
+				C6E848F116653B0700BB94F1 /* VWWCubeModel2x2.h */,
+				C6E848F216653B0800BB94F1 /* VWWCubeModel2x2.m */,
 				C6E848F616653B2400BB94F1 /* VWWCubeModel4x4.h */,
 				C6E848F716653B2400BB94F1 /* VWWCubeModel4x4.m */,
 				C6E848FA16653B3700BB94F1 /* VWWCubeModel5x5.h */,
 				C6E848FB16653B3700BB94F1 /* VWWCubeModel5x5.m */,
 			);
+			name = ToBeImplemented;
+			sourceTree = "<group>";
+		};
+		C6E8491216655C2600BB94F1 /* c */ = {
+			isa = PBXGroup;
+			children = (
+				C67866521653249100082C3C /* RubixTests.h */,
+				C67866531653249100082C3C /* RubixTests.m */,
+			);
+			name = c;
+			sourceTree = "<group>";
+		};
+		C6E8491316655C2B00BB94F1 /* objective-c */ = {
+			isa = PBXGroup;
+			children = (
+				C6E848D81663F5A700BB94F1 /* VWWCubeModelTests.h */,
+				C6E848D91663F5A700BB94F1 /* VWWCubeModelTests.m */,
+				C60FE5D9166475ED00D55C2D /* VWWCubeModel3x3Tests.h */,
+				C60FE5DA166475ED00D55C2D /* VWWCubeModel3x3Tests.m */,
+			);
 			name = "objective-c";
+			sourceTree = "<group>";
+		};
+		C6E8491416655C4C00BB94F1 /* ToBeImplemented */ = {
+			isa = PBXGroup;
+			children = (
+				C6E84904166555B400BB94F1 /* VWWCubeModel2x2Tests.h */,
+				C6E84905166555B400BB94F1 /* VWWCubeModel2x2Tests.m */,
+				C6E849071665561900BB94F1 /* VWWCubeModel4x4Tests.h */,
+				C6E849081665561900BB94F1 /* VWWCubeModel4x4Tests.m */,
+				C6E8490A1665566700BB94F1 /* VWWCubeModel5x5Tests.h */,
+				C6E8490B1665566700BB94F1 /* VWWCubeModel5x5Tests.m */,
+			);
+			name = ToBeImplemented;
+			sourceTree = "<group>";
+		};
+		C6E8491816655C7500BB94F1 /* active */ = {
+			isa = PBXGroup;
+			children = (
+				C6E8491316655C2B00BB94F1 /* objective-c */,
+			);
+			name = active;
+			sourceTree = "<group>";
+		};
+		C6E8491916655C7E00BB94F1 /* passive */ = {
+			isa = PBXGroup;
+			children = (
+				C6E8491416655C4C00BB94F1 /* ToBeImplemented */,
+				C6E8491216655C2600BB94F1 /* c */,
+			);
+			name = passive;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -478,10 +539,11 @@
 				C6E848D01663F1C600BB94F1 /* VWWCubeModel.m in Sources */,
 				C60CA06F16645B4E0067B174 /* VWWCube.m in Sources */,
 				C60CA07B166470890067B174 /* VWWCubeModel3x3.m in Sources */,
-				C6E848F016653A1600BB94F1 /* VWWCubeModel3x3Tests.m in Sources */,
 				C6E848F416653B0800BB94F1 /* VWWCubeModel2x2.m in Sources */,
 				C6E848F916653B2400BB94F1 /* VWWCubeModel4x4.m in Sources */,
 				C6E848FD16653B3700BB94F1 /* VWWCubeModel5x5.m in Sources */,
+				C6E84910166558E000BB94F1 /* VWWCubeModelTests.m in Sources */,
+				C6E8491716655C6500BB94F1 /* VWWCubeModel3x3Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

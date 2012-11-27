@@ -10,6 +10,40 @@
 
 @implementation VWWCubeModel2x2
 -(void)rotateSlice:(VWWRotate2x2)rotate{
+    switch(rotate){
+        case VWWRotate2x2Front:
+            break;
+        case VWWRotate2x2FrontPrime:
+            break;
+        case VWWRotate2x2Right:
+            break;
+        case VWWRotate2x2RightPrime:
+            break;
+        case VWWRotate2x2Back:
+            break;
+        case VWWRotate2x2BackPrime:
+            break;
+        case VWWRotate2x2Left:
+            break;
+        case VWWRotate2x2LeftPrime:
+            break;
+        case VWWRotate2x2Top:
+            break;
+        case VWWRotate2x2TopPrime:
+            break;
+        default:
+            break;
+    }
+}
+
+
+-(void)rotateTop{
     
 }
+
+
+
+
+
+
 @end

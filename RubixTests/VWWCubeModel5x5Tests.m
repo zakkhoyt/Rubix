@@ -1,5 +1,5 @@
 //
-//  VWWCubeModel3x3Tests.m
+//  VWWCubeModel5x5Tests.m
 //  Rubix
 //
 //  Created by Zakk Hoyt on 11/26/12.
@@ -7,21 +7,21 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "VWWCubeModel3x3Tests.h"
-#import "VWWCubeModel3x3.h"
+#import "VWWCubeModel5x5Tests.h"
+#import "VWWCubeModel5x5.h"
 
 
-@interface VWWCubeModel3x3Tests ()
-@property (nonatomic, retain) VWWCubeModel3x3* cube;
+@interface VWWCubeModel5x5Tests ()
+@property (nonatomic, retain) VWWCubeModel5x5* cube;
 @end
 
 
-@implementation VWWCubeModel3x3Tests
+@implementation VWWCubeModel5x5Tests
 
 - (void)setUp{
     [self printMethod:(char*)__FUNCTION__];
     [super setUp];
-    _cube = [[VWWCubeModel3x3 alloc]initWithSize:3];
+    _cube = [[VWWCubeModel5x5 alloc]initWithSize:5];
     
 }
 

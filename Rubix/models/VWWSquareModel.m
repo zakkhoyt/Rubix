@@ -24,6 +24,27 @@
     return self;
 }
 
+
+-(char)charForColor{
+    switch(self.color){
+        case kVWWColorBlue:
+            return 'B';
+        case kVWWColorGreen:
+            return 'G';
+        case kVWWColorOrange:
+            return 'O';
+        case kVWWColorRed:
+            return 'R';
+        case kVWWColorWhite:
+            return 'W';
+        case kVWWColorYellow:
+            return 'Y';
+        default:
+            return '!';
+    }
+}
+
+
 -(NSString*)description{
     NSMutableString* r = [[NSMutableString alloc]init];
     if(self.color == kVWWColorBlue){
@@ -77,6 +98,25 @@
 
 }
 
+
+-(NSString*)stringForFace{
+    switch(self.face){
+        case kVWWFaceFront:
+            return @"Front";
+        case kVWWFaceRight:
+            return @"Right";
+        case kVWWFaceBack:
+            return @"Back";
+        case kVWWFaceLeft:
+            return @"Left";
+        case kVWWFaceTop:
+            return @"Top";
+        case kVWWFaceBottom:
+            return @"Bottom";
+        default:
+            return @"Error";
+    }
+}
 
 -(NSUInteger)valueForColor{
     switch(self.color){

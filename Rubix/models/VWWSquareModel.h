@@ -34,6 +34,8 @@ typedef enum{
 @property (nonatomic) VWWFace       face;
 @property (nonatomic) NSUInteger    location;
 -(id)initWithColor:(VWWColor)color atLocation:(NSUInteger)location onFace:(VWWFace)face;
+-(char)charForColor;
+-(NSString*)stringForFace;
 -(NSUInteger)valueForColor;
 -(NSUInteger)valueForFace;
 @end

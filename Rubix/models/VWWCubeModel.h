@@ -54,7 +54,7 @@
 //                                  left:(NSMutableArray**)left
 //                                   top:(NSMutableArray**)top
 //                                bottom:(NSMutableArray**)bottom;
-
+//
 
 
 // Checks if each side of the cube is a solid color. Doesn't matter which
@@ -66,7 +66,7 @@
 
 // Print the cube data to the console
 -(void)printCube;
-
+-(void)printCubeVerbose;
 
 -(void)sortSquaresByFaceAndLocation;
 
