@@ -139,41 +139,49 @@ const CGFloat kRotateZSensitivity = 0.25f;
     float z = 1;
     VWWCubeScene* cubes[28] = {};
 
+    
+    
     cubes[0] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
-    cubes[0].translate = GLKVector3Make(-cubeWidth, cubeWidth, z);
+    cubes[0].translate = GLKVector3Make(0, 0, 13);
     [self.cubes addObject:cubes[0]];
 
-    cubes[1] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
-    cubes[1].translate = GLKVector3Make(0, cubeWidth, z);
-    [self.cubes addObject:cubes[1]];
     
-    cubes[2] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
-    cubes[2].translate = GLKVector3Make(cubeWidth, cubeWidth, z);
-    [self.cubes addObject:cubes[2]];
     
-    cubes[3] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
-    cubes[3].translate = GLKVector3Make(-cubeWidth, 0, z);
-    [self.cubes addObject:cubes[3]];
-    
-    cubes[4] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
-    cubes[4].translate = GLKVector3Make(0, 0, z);
-    [self.cubes addObject:cubes[4]];
-    
-    cubes[5] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
-    cubes[5].translate = GLKVector3Make(cubeWidth, 0, z);
-    [self.cubes addObject:cubes[5]];
-    
-    cubes[6] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
-    cubes[6].translate = GLKVector3Make(-cubeWidth, -cubeWidth, z);
-    [self.cubes addObject:cubes[6]];
-    
-    cubes[7] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
-    cubes[7].translate = GLKVector3Make(0, -cubeWidth, z);
-    [self.cubes addObject:cubes[7]];
-    
-    cubes[8] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
-    cubes[8].translate = GLKVector3Make(cubeWidth, -cubeWidth, z);
-    [self.cubes addObject:cubes[8]];
+//    cubes[0] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+//    cubes[0].translate = GLKVector3Make(-cubeWidth, cubeWidth, z);
+//    [self.cubes addObject:cubes[0]];
+//
+//    cubes[1] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+//    cubes[1].translate = GLKVector3Make(0, cubeWidth, z);
+//    [self.cubes addObject:cubes[1]];
+//    
+//    cubes[2] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+//    cubes[2].translate = GLKVector3Make(cubeWidth, cubeWidth, z);
+//    [self.cubes addObject:cubes[2]];
+//    
+//    cubes[3] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+//    cubes[3].translate = GLKVector3Make(-cubeWidth, 0, z);
+//    [self.cubes addObject:cubes[3]];
+//    
+//    cubes[4] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+//    cubes[4].translate = GLKVector3Make(0, 0, z);
+//    [self.cubes addObject:cubes[4]];
+//    
+//    cubes[5] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+//    cubes[5].translate = GLKVector3Make(cubeWidth, 0, z);
+//    [self.cubes addObject:cubes[5]];
+//    
+//    cubes[6] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+//    cubes[6].translate = GLKVector3Make(-cubeWidth, -cubeWidth, z);
+//    [self.cubes addObject:cubes[6]];
+//    
+//    cubes[7] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+//    cubes[7].translate = GLKVector3Make(0, -cubeWidth, z);
+//    [self.cubes addObject:cubes[7]];
+//    
+//    cubes[8] = [[VWWCubeScene alloc]initWithFrame:self.view.frame context:self.context];
+//    cubes[8].translate = GLKVector3Make(cubeWidth, -cubeWidth, z);
+//    [self.cubes addObject:cubes[8]];
 
 
     
