@@ -14,7 +14,7 @@
 #import <OpenGLES/ES2/gl.h>
 #import "VWWCubeScene.h"
 #import "VWWViewController.h"
-#import "VWWCube.h"
+#import "VWWCubeModel.h"
 #import "VWWMotionMonitor.h"
 
 
@@ -220,17 +220,17 @@ const CGFloat kRotateZSensitivity = 0.25f;
 -(void)vwwMotionMonitor:(VWWMotionMonitor*)sender gyroUpdated:(MotionDevice)device{
 }
 - (IBAction)diffuseSliderChanged:(id)sender {
-    UISlider* slider = (UISlider*)sender;
+//    UISlider* slider = (UISlider*)sender;
 //    self.cubeScene.lightDiffuse = slider.value;
 }
 
 - (IBAction)ambientSliderChanged:(id)sender {
-    UISlider* slider = (UISlider*)sender;
+//    UISlider* slider = (UISlider*)sender;
 //  self.cubeScene.lightAmbient = slider.value;
 }
 
 - (IBAction)specularValueChanged:(id)sender {
-    UISlider* slider = (UISlider*)sender;
+ //   UISlider* slider = (UISlider*)sender;
 //    self.cubeScene.lightSpecular = slider.value;
 }
 

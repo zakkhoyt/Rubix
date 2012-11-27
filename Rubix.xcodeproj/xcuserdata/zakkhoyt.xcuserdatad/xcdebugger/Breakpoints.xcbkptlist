@@ -99,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Rubix/models/VWWCubeModel.m"
-         timestampString = "375650906.321374"
+         timestampString = "375685928.110434"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
+         startingLineNumber = "48"
+         endingLineNumber = "48"
          landmarkName = "-initializeClass"
          landmarkType = "5">
       </FileBreakpoint>
@@ -112,26 +112,26 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Rubix/models/VWWCubeModel.m"
-         timestampString = "375650906.805475"
+         timestampString = "375685928.110434"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "63"
-         endingLineNumber = "63"
+         startingLineNumber = "48"
+         endingLineNumber = "48"
          landmarkName = "-initializeClass"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Rubix/models/VWWCubeModel.m"
-         timestampString = "375650908.852767"
+         timestampString = "375685928.110434"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "66"
-         endingLineNumber = "66"
-         landmarkName = "-initializeClass"
-         landmarkType = "5">
+         startingLineNumber = "50"
+         endingLineNumber = "50"
+         landmarkName = "@implementation VWWCubeModel"
+         landmarkType = "3">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

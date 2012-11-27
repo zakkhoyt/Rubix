@@ -7,7 +7,7 @@
 //
 
 #import "VWWCubeScene.h"
-#import "VWWCUbe.h"
+#import "VWWCUbeModel.h"
 
 #define VWW_CUBE_SCENE_GL_ENABLE_TEXTURES 1
 //#define VWW_CUBE_SCENE_GL_ENABLE_LIGHTING 1
@@ -78,7 +78,7 @@ const GLubyte Indices[] = {
 @property (nonatomic) GLuint vertexArray;
 @property (nonatomic) GLuint vertexBuffer;
 @property (nonatomic) GLuint indexBuffer;
-@property (nonatomic, retain) VWWCube* cube;
+@property (nonatomic, retain) VWWCubeModel* cube;
 @property (nonatomic, retain) GLKBaseEffect* effect;
 @end
 

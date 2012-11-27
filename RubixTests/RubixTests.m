@@ -7,7 +7,7 @@
 //
 
 #import "RubixTests.h"
-#import "VWWCube.h"
+#import "VWWCubeModel.h"
 #import <SenTestingKit/SenTestingKit.h>
 
 

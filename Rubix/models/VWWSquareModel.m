@@ -8,62 +8,110 @@
 
 #import "VWWSquareModel.h"
 
+@interface VWWSquareModel ()
+
+
+@end
+
 @implementation VWWSquareModel
 -(id)initWithColor:(VWWColor)color atLocation:(NSUInteger)location onFace:(VWWFace)face{
     self = [super init];
     if(self){
-        self.color = color;
-        self.location = location;
-        self.face = face;
+        _color = color;
+        _location = location;
+        _face = face;
     }
     return self;
 }
 
 -(NSString*)description{
     NSMutableString* r = [[NSMutableString alloc]init];
-    if(self.color = kVWWColorBlue){
+    if(self.color == kVWWColorBlue){
         [r appendFormat:@"color=blue "];
     }
-    else if(self.color = kVWWColorGreen){
+    else if(self.color == kVWWColorGreen){
         [r appendFormat:@"color=green "];
     }
-    else if(self.color = kVWWColorRed){
+    else if(self.color == kVWWColorRed){
         [r appendFormat:@"color=red "];
     }
-    else if(self.color = kVWWColorYellow){
+    else if(self.color == kVWWColorYellow){
         [r appendFormat:@"color=yellow "];
     }
-    else if(self.color = kVWWColorWhite){
+    else if(self.color == kVWWColorWhite){
         [r appendFormat:@"color=white "];
     }
-    else if(self.color = kVWWColorOrange){
+    else if(self.color == kVWWColorOrange){
         [r appendFormat:@"color=orange "];
     }
+    else{
+        [r appendFormat:@"color=????? "];
+    }
 
-    
-    if(self.face = kVWWFaceBack){
+    if(self.face == kVWWFaceBack){
         [r appendFormat:@"face=back "];
     }
-    else if(self.face = kVWWFaceBottom){
+    else if(self.face == kVWWFaceBottom){
         [r appendFormat:@"face=bottom "];
     }
-    else if(self.face = kVWWFaceFront){
+    else if(self.face == kVWWFaceFront){
         [r appendFormat:@"face=front "];
     }
-    else if(self.face = kVWWFaceLeft){
+    else if(self.face == kVWWFaceLeft){
         [r appendFormat:@"face=left "];
     }
-    else if(self.face = kVWWFaceRight){
+    else if(self.face == kVWWFaceRight){
         [r appendFormat:@"face=right "];
     }
-    else if(self.face = kVWWFaceTop){
+    else if(self.face == kVWWFaceTop){
         [r appendFormat:@"face=top "];
+    }
+    else{
+        [r appendFormat:@"face=???? "];
     }
 
     [r appendFormat:@"location=%d ", self.location];
-    
+//    [r appendFormat:@"address=%p", self];
     
     return r;
 
+}
+
+
+-(NSUInteger)valueForColor{
+    switch(self.color){
+        case kVWWColorBlue:
+            return 1;
+        case kVWWColorGreen:
+            return 2;
+        case kVWWColorOrange:
+            return 3;
+        case kVWWColorRed:
+            return 4;
+        case kVWWColorWhite:
+            return 5;
+        case kVWWColorYellow:
+            return 6;
+        default:
+            return 666;
+    }
+}
+-(NSUInteger)valueForFace{
+    switch(self.face){
+        case kVWWFaceFront:
+            return 1;
+        case kVWWFaceRight:
+            return 2;
+        case kVWWFaceBack:
+            return 3;
+        case kVWWFaceLeft:
+            return 4;
+        case kVWWFaceTop:
+            return 5;
+        case kVWWFaceBottom:
+            return 6;
+        default:
+            return 666;
+    }
 }
 @end

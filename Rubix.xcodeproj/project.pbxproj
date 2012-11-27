@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		C6073BFC16533B1A00277649 /* VWWMotionMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C6073BFB16533B1A00277649 /* VWWMotionMonitor.m */; };
 		C6073BFF16533E1600277649 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6073BFE16533E1600277649 /* CoreMotion.framework */; };
+		C60CA06E16645B4A0067B174 /* VWWCube.m in Sources */ = {isa = PBXBuildFile; fileRef = C60CA06D16645B4A0067B174 /* VWWCube.m */; };
+		C60CA06F16645B4E0067B174 /* VWWCube.m in Sources */ = {isa = PBXBuildFile; fileRef = C60CA06D16645B4A0067B174 /* VWWCube.m */; };
+		C60CA07A166470890067B174 /* VWWCubeModel3x3.m in Sources */ = {isa = PBXBuildFile; fileRef = C60CA079166470890067B174 /* VWWCubeModel3x3.m */; };
+		C60CA07B166470890067B174 /* VWWCubeModel3x3.m in Sources */ = {isa = PBXBuildFile; fileRef = C60CA079166470890067B174 /* VWWCubeModel3x3.m */; };
+		C60FE5E01664863C00D55C2D /* VWWCubeModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848D91663F5A700BB94F1 /* VWWCubeModelTests.m */; };
 		C67866201653249100082C3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678661F1653249100082C3C /* UIKit.framework */; };
 		C67866221653249100082C3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866211653249100082C3C /* Foundation.framework */; };
 		C67866241653249100082C3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866231653249100082C3C /* CoreGraphics.framework */; };
@@ -23,8 +28,6 @@
 		C67866481653249100082C3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678661F1653249100082C3C /* UIKit.framework */; };
 		C67866491653249100082C3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67866211653249100082C3C /* Foundation.framework */; };
 		C67866511653249100082C3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C678664F1653249100082C3C /* InfoPlist.strings */; };
-		C67866651653255B00082C3C /* VWWCube.m in Sources */ = {isa = PBXBuildFile; fileRef = C67866641653255B00082C3C /* VWWCube.m */; };
-		C67866661653255B00082C3C /* VWWCube.m in Sources */ = {isa = PBXBuildFile; fileRef = C67866641653255B00082C3C /* VWWCube.m */; };
 		C678666D1653272000082C3C /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678666A1653272000082C3C /* GLKit.framework */; };
 		C678666E1653272000082C3C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678666B1653272000082C3C /* OpenGLES.framework */; };
 		C678666F1653272000082C3C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C678666C1653272000082C3C /* QuartzCore.framework */; };
@@ -44,7 +47,6 @@
 		C6E848C91663ED9000BB94F1 /* VWWSquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */; };
 		C6E848CF1663F1C600BB94F1 /* VWWSquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */; };
 		C6E848D01663F1C600BB94F1 /* VWWCubeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848C41663E63800BB94F1 /* VWWCubeModel.m */; };
-		C6E848DA1663F5A700BB94F1 /* VWWCubeModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E848D91663F5A700BB94F1 /* VWWCubeModelTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,12 @@
 		C6073BFA16533B1A00277649 /* VWWMotionMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWMotionMonitor.h; path = models/VWWMotionMonitor.h; sourceTree = "<group>"; };
 		C6073BFB16533B1A00277649 /* VWWMotionMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWMotionMonitor.m; path = models/VWWMotionMonitor.m; sourceTree = "<group>"; };
 		C6073BFE16533E1600277649 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		C60CA06C16645B4A0067B174 /* VWWCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWCube.h; path = models/VWWCube.h; sourceTree = "<group>"; };
+		C60CA06D16645B4A0067B174 /* VWWCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWCube.m; path = models/VWWCube.m; sourceTree = "<group>"; };
+		C60CA078166470790067B174 /* VWWCubeModel3x3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWCubeModel3x3.h; path = models/VWWCubeModel3x3.h; sourceTree = "<group>"; };
+		C60CA079166470890067B174 /* VWWCubeModel3x3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWCubeModel3x3.m; path = models/VWWCubeModel3x3.m; sourceTree = "<group>"; };
+		C60FE5D9166475ED00D55C2D /* VWWCubeModel3x3Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCubeModel3x3Tests.h; sourceTree = "<group>"; };
+		C60FE5DA166475ED00D55C2D /* VWWCubeModel3x3Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCubeModel3x3Tests.m; sourceTree = "<group>"; };
 		C678661B1653249100082C3C /* Rubix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rubix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C678661F1653249100082C3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C67866211653249100082C3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -81,8 +89,6 @@
 		C67866501653249100082C3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C67866521653249100082C3C /* RubixTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RubixTests.h; sourceTree = "<group>"; };
 		C67866531653249100082C3C /* RubixTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RubixTests.m; sourceTree = "<group>"; };
-		C67866631653255B00082C3C /* VWWCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWCube.h; path = models/VWWCube.h; sourceTree = "<group>"; };
-		C67866641653255B00082C3C /* VWWCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWCube.m; path = models/VWWCube.m; sourceTree = "<group>"; };
 		C678666A1653272000082C3C /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		C678666B1653272000082C3C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		C678666C1653272000082C3C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -210,6 +216,8 @@
 				C67866531653249100082C3C /* RubixTests.m */,
 				C6E848D81663F5A700BB94F1 /* VWWCubeModelTests.h */,
 				C6E848D91663F5A700BB94F1 /* VWWCubeModelTests.m */,
+				C60FE5D9166475ED00D55C2D /* VWWCubeModel3x3Tests.h */,
+				C60FE5DA166475ED00D55C2D /* VWWCubeModel3x3Tests.m */,
 			);
 			path = RubixTests;
 			sourceTree = "<group>";
@@ -289,8 +297,8 @@
 		C6E848CA1663EE0000BB94F1 /* c */ = {
 			isa = PBXGroup;
 			children = (
-				C67866631653255B00082C3C /* VWWCube.h */,
-				C67866641653255B00082C3C /* VWWCube.m */,
+				C60CA06C16645B4A0067B174 /* VWWCube.h */,
+				C60CA06D16645B4A0067B174 /* VWWCube.m */,
 			);
 			name = c;
 			sourceTree = "<group>";
@@ -302,6 +310,8 @@
 				C6E848C81663ED9000BB94F1 /* VWWSquareModel.m */,
 				C6E848C31663E63800BB94F1 /* VWWCubeModel.h */,
 				C6E848C41663E63800BB94F1 /* VWWCubeModel.m */,
+				C60CA078166470790067B174 /* VWWCubeModel3x3.h */,
+				C60CA079166470890067B174 /* VWWCubeModel3x3.m */,
 			);
 			name = "objective-c";
 			sourceTree = "<group>";
@@ -427,7 +437,6 @@
 			files = (
 				C678662C1653249100082C3C /* main.m in Sources */,
 				C67866301653249100082C3C /* VWWAppDelegate.m in Sources */,
-				C67866651653255B00082C3C /* VWWCube.m in Sources */,
 				C67866751653293800082C3C /* VWWViewController.m in Sources */,
 				C6073BFC16533B1A00277649 /* VWWMotionMonitor.m in Sources */,
 				C6CA7C33165C3D2700FA1AC6 /* VWWCubeScene.m in Sources */,
@@ -435,6 +444,8 @@
 				C6E848B3165D508400BB94F1 /* VWWMultipleCubes.m in Sources */,
 				C6E848C51663E63800BB94F1 /* VWWCubeModel.m in Sources */,
 				C6E848C91663ED9000BB94F1 /* VWWSquareModel.m in Sources */,
+				C60CA06E16645B4A0067B174 /* VWWCube.m in Sources */,
+				C60CA07A166470890067B174 /* VWWCubeModel3x3.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,10 +453,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C67866661653255B00082C3C /* VWWCube.m in Sources */,
 				C6E848CF1663F1C600BB94F1 /* VWWSquareModel.m in Sources */,
 				C6E848D01663F1C600BB94F1 /* VWWCubeModel.m in Sources */,
-				C6E848DA1663F5A700BB94F1 /* VWWCubeModelTests.m in Sources */,
+				C60CA06F16645B4E0067B174 /* VWWCube.m in Sources */,
+				C60CA07B166470890067B174 /* VWWCubeModel3x3.m in Sources */,
+				C60FE5E01664863C00D55C2D /* VWWCubeModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
