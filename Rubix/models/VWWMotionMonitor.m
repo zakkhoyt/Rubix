@@ -22,7 +22,7 @@ const float kMagnetometerZMax = 30.0f;
 
 
 @interface VWWMotionMonitor ()
-@property (nonatomic, retain) CMMotionManager* motion;
+@property (nonatomic, strong) CMMotionManager* motion;
 @property Devices devices;
 @end
 
@@ -40,9 +40,7 @@ const float kMagnetometerZMax = 30.0f;
 }
 
 -(void)dealloc{
-    [self.motion release];
-    self.motion = nil;
-    [super dealloc];
+    self.motion;
 }
 
 
@@ -116,7 +114,7 @@ const float kMagnetometerZMax = 30.0f;
         });
     };
 
-    [self.motion startAccelerometerUpdatesToQueue:accelerometerQueue withHandler:[[accelerometerHandler copy]autorelease]];
+    [self.motion startAccelerometerUpdatesToQueue:accelerometerQueue withHandler:[accelerometerHandler copy]];
     NSLog(@"Started Accelerometer");
 }
     
@@ -198,7 +196,7 @@ const float kMagnetometerZMax = 30.0f;
         });
     };
     
-    [self.motion startMagnetometerUpdatesToQueue:magnetometerQueue withHandler:[[magnetometerHandler copy]autorelease]];
+    [self.motion startMagnetometerUpdatesToQueue:magnetometerQueue withHandler:[magnetometerHandler copy]];
     NSLog(@"Started Magnetometer");
     
 }
@@ -278,7 +276,7 @@ const float kMagnetometerZMax = 30.0f;
         });
     };
     
-    [self.motion startGyroUpdatesToQueue:gyroQueue withHandler:[[gyroHandler copy]autorelease]];
+    [self.motion startGyroUpdatesToQueue:gyroQueue withHandler:[gyroHandler copy]];
     NSLog(@"Started Gyros");
 
 }

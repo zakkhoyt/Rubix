@@ -25,14 +25,14 @@ const CGFloat kRotateZSensitivity = 0.25f;
 @interface VWWViewController () <GLKViewControllerDelegate,
     VWWMotionMonitorDelegate>{
 }
-@property (nonatomic, retain) EAGLContext * context;
-@property (nonatomic, retain) IBOutlet GLKView* view;
-@property (nonatomic, retain) VWWMotionMonitor* motionMonitor;
+@property (nonatomic, strong) EAGLContext * context;
+@property (nonatomic, strong) IBOutlet GLKView* view;
+@property (nonatomic, strong) VWWMotionMonitor* motionMonitor;
 @property (nonatomic) CGPoint touchBegan;
 @property (nonatomic) CGPoint touchMoved;
 @property (nonatomic) CGPoint touchEnded;
-@property (nonatomic, retain) NSTimer* rotateTimer;
-@property (nonatomic, retain) NSMutableArray* cubes;
+@property (nonatomic, strong) NSTimer* rotateTimer;
+@property (nonatomic, strong) NSMutableArray* cubes;
 
 - (IBAction)diffuseSliderChanged:(id)sender;
 - (IBAction)ambientSliderChanged:(id)sender;
@@ -87,14 +87,14 @@ const CGFloat kRotateZSensitivity = 0.25f;
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self printMethod:(char*)__FUNCTION__ withTouches:touches withEvent:event];
     NSArray *touchesArray = [touches allObjects];
-    UITouch* touch = [touchesArray objectAtIndex:0];
+    UITouch* touch = touchesArray[0];
     self.touchBegan = [touch locationInView:nil];
     
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     [self printMethod:(char*)__FUNCTION__ withTouches:touches withEvent:event];
     NSArray *touchesArray = [touches allObjects];
-    UITouch* touch = [touchesArray objectAtIndex:0];
+    UITouch* touch = touchesArray[0];
     self.touchMoved = [touch locationInView:nil];
     CGFloat rotateX = self.touchBegan.x - self.touchMoved.x;
     CGFloat rotateY = self.touchBegan.y - self.touchMoved.y;
@@ -113,7 +113,7 @@ const CGFloat kRotateZSensitivity = 0.25f;
     NSArray *touchesArray = [touches allObjects];
     NSMutableString* s = [NSMutableString new];
     for(int index = 0; index < touches.count; index++){
-        UITouch *touch = (UITouch *)[touchesArray objectAtIndex:index];
+        UITouch *touch = (UITouch *)touchesArray[index];
         CGPoint point = [touch locationInView:nil];
         [s appendFormat:@" %@", NSStringFromCGPoint(point)];
     }

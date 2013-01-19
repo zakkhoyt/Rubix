@@ -78,8 +78,8 @@ const GLubyte Indices[] = {
 @property (nonatomic) GLuint vertexArray;
 @property (nonatomic) GLuint vertexBuffer;
 @property (nonatomic) GLuint indexBuffer;
-@property (nonatomic, retain) VWWCubeModel* cube;
-@property (nonatomic, retain) GLKBaseEffect* effect;
+@property (nonatomic, strong) VWWCubeModel* cube;
+@property (nonatomic, strong) GLKBaseEffect* effect;
 @end
 
 @implementation VWWCubeScene
@@ -128,10 +128,7 @@ const GLubyte Indices[] = {
     self.effect = [[GLKBaseEffect alloc] init];
     
 #if defined(VWW_CUBE_SCENE_GL_ENABLE_TEXTURES)
-    NSDictionary * options = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSNumber numberWithBool:YES],
-                              GLKTextureLoaderOriginBottomLeft,
-                              nil];
+    NSDictionary * options = @{GLKTextureLoaderOriginBottomLeft: @YES};
     NSError * error;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"3x3_01" ofType:@"png"];
     GLKTextureInfo * info = [GLKTextureLoader textureWithContentsOfFile:path options:options error:&error];
@@ -210,6 +207,6 @@ const GLubyte Indices[] = {
     [EAGLContext setCurrentContext:self.context];
     glDeleteBuffers(1, &_vertexBuffer);
     glDeleteBuffers(1, &_indexBuffer);
-    [self.effect release];
+    self.effect;
 }
 @end

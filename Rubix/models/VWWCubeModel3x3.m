@@ -9,7 +9,7 @@
 #import "VWWCubeModel3x3.h"
 
 @interface VWWCubeModel3x3 ()
-@property (nonatomic, retain) VWWCubeModel3x3* cube;
+@property (nonatomic, strong) VWWCubeModel3x3* cube;
 @end
 
 @implementation VWWCubeModel3x3

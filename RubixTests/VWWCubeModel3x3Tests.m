@@ -12,7 +12,7 @@
 
 
 @interface VWWCubeModel3x3Tests ()
-@property (nonatomic, retain) VWWCubeModel3x3* cube;
+@property (nonatomic, strong) VWWCubeModel3x3* cube;
 @end
 
 
@@ -27,7 +27,6 @@
 
 - (void)tearDown{
     [self printMethod:(char*)__FUNCTION__];
-    [_cube release];
     [super tearDown];
 }
 

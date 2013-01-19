@@ -12,7 +12,7 @@
 @interface VWWCubeModel ()
 @property (nonatomic) NSUInteger cubeSize;
 @property (nonatomic) NSUInteger squaresPerColor;
-@property (nonatomic, retain) NSMutableArray* squares;
+@property (nonatomic, strong) NSMutableArray* squares;
 
 @end
 
@@ -82,14 +82,14 @@
     for(NSUInteger f = 0; f < kNumSides; f++){
         // Get the face name and print it
         squareIndex = f * self.squaresPerColor;
-        square  = [self.squares objectAtIndex:squareIndex];
+        square  = (self.squares)[squareIndex];
         [cubeString appendFormat:@"---- %@ ----\n", square.stringForFace];
         
         for(NSUInteger y = 0; y < self.cubeSize; y++){
             for(NSUInteger x = 0; x < self.cubeSize; x++){
                 // Get the color of the square and append it to rowString
                 squareIndex = f * self.squaresPerColor + y * self.cubeSize + x;
-                square = [self.squares objectAtIndex:squareIndex];
+                square = (self.squares)[squareIndex];
                 [rowString appendFormat:@"%c", square.charForColor];
             }
             [cubeString appendFormat:@"%@\n", rowString];
@@ -104,30 +104,30 @@
 // Print the cube data to the console
 -(void)printCubeVerbose{
     for(NSUInteger index = 0; index < self.squaresPerColor * 6; index++){
-        NSLog(@"%@", [self.squares objectAtIndex:index]);
+        NSLog(@"%@", (self.squares)[index]);
     }
 }
 
 -(void)sortSquaresByFaceAndLocation{
-    const NSUInteger kNumFaces = 6;
-    NSMutableArray* faces[kNumFaces];
-
-    [self breakSquaresIntoFaceArraysFront:&faces[0]
-                                    right:&faces[1]
-                                     back:&faces[2]
-                                     left:&faces[3]
-                                      top:&faces[4]
-                                   bottom:&faces[5]];
-    
-    [self.squares removeAllObjects];
-    for(NSUInteger index = 0; index < kNumFaces; index++){
-        [faces[index] sortUsingComparator:^(id obj1, id obj2) {
-            VWWSquareModel* square1 = (VWWSquareModel*)obj1;
-            VWWSquareModel* square2 = (VWWSquareModel*)obj2;
-            return square1.location < square2.location ? NSOrderedAscending : NSOrderedDescending;
-        }];
-        [self.squares addObjectsFromArray:faces[index]];
-    }
+//    const NSUInteger kNumFaces = 6;
+//    NSMutableArray* faces[kNumFaces];
+//
+//    [self breakSquaresIntoFaceArraysFront:&faces[0]
+//                                    right:&faces[1]
+//                                     back:&faces[2]
+//                                     left:&faces[3]
+//                                      top:&faces[4]
+//                                   bottom:&faces[5]];
+//    
+//    [self.squares removeAllObjects];
+//    for(NSUInteger index = 0; index < kNumFaces; index++){
+//        [faces[index] sortUsingComparator:^(id obj1, id obj2) {
+//            VWWSquareModel* square1 = (VWWSquareModel*)obj1;
+//            VWWSquareModel* square2 = (VWWSquareModel*)obj2;
+//            return square1.location < square2.location ? NSOrderedAscending : NSOrderedDescending;
+//        }];
+//        [self.squares addObjectsFromArray:faces[index]];
+//    }
 }
 
 
@@ -154,12 +154,12 @@
     *yellow = [[NSMutableArray alloc]initWithCapacity:self.squaresPerColor];
     
     for(NSUInteger index = 0; index < self.squaresPerColor; index++){
-        [*blue addObject:[self.squares objectAtIndex:0 * self.squaresPerColor + index]];
-        [*green addObject:[self.squares objectAtIndex:1 * self.squaresPerColor + index]];
-        [*orange addObject:[self.squares objectAtIndex:2 * self.squaresPerColor + index]];
-        [*red addObject:[self.squares objectAtIndex:3 * self.squaresPerColor + index]];
-        [*white addObject:[self.squares objectAtIndex:4 * self.squaresPerColor + index]];
-        [*yellow addObject:[self.squares objectAtIndex:5 * self.squaresPerColor + index]];
+        [*blue addObject:(self.squares)[0 * self.squaresPerColor + index]];
+        [*green addObject:(self.squares)[1 * self.squaresPerColor + index]];
+        [*orange addObject:(self.squares)[2 * self.squaresPerColor + index]];
+        [*red addObject:(self.squares)[3 * self.squaresPerColor + index]];
+        [*white addObject:(self.squares)[4 * self.squaresPerColor + index]];
+        [*yellow addObject:(self.squares)[5 * self.squaresPerColor + index]];
     }
     
 
@@ -189,12 +189,12 @@
     *bottom = [[NSMutableArray alloc]initWithCapacity:self.squaresPerColor];
     
     for(NSUInteger index = 0; index < self.squaresPerColor; index++){
-        [*front addObject:[self.squares objectAtIndex:0 * self.squaresPerColor + index]];
-        [*right addObject:[self.squares objectAtIndex:1 * self.squaresPerColor + index]];
-        [*back addObject:[self.squares objectAtIndex:2 * self.squaresPerColor + index]];
-        [*left addObject:[self.squares objectAtIndex:3 * self.squaresPerColor + index]];
-        [*top addObject:[self.squares objectAtIndex:4 * self.squaresPerColor + index]];
-        [*bottom addObject:[self.squares objectAtIndex:5 * self.squaresPerColor + index]];
+        [*front addObject:(self.squares)[0 * self.squaresPerColor + index]];
+        [*right addObject:(self.squares)[1 * self.squaresPerColor + index]];
+        [*back addObject:(self.squares)[2 * self.squaresPerColor + index]];
+        [*left addObject:(self.squares)[3 * self.squaresPerColor + index]];
+        [*top addObject:(self.squares)[4 * self.squaresPerColor + index]];
+        [*bottom addObject:(self.squares)[5 * self.squaresPerColor + index]];
     }
 }
 

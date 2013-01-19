@@ -12,7 +12,7 @@
 
 
 @interface VWWCubeModelTests ()
-@property (nonatomic, retain) VWWCubeModel* cube;
+@property (nonatomic, strong) VWWCubeModel* cube;
 @end
 
 @implementation VWWCubeModelTests (helpers)
