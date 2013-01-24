@@ -230,7 +230,7 @@
 		C678664C1653249100082C3C /* RubixTests */ = {
 			isa = PBXGroup;
 			children = (
-				C6E8491916655C7E00BB94F1 /* passive */,
+				C6E8491916655C7E00BB94F1 /* inactive */,
 				C6E8491816655C7500BB94F1 /* active */,
 				C678664D1653249100082C3C /* Supporting Files */,
 			);
@@ -386,13 +386,13 @@
 			name = active;
 			sourceTree = "<group>";
 		};
-		C6E8491916655C7E00BB94F1 /* passive */ = {
+		C6E8491916655C7E00BB94F1 /* inactive */ = {
 			isa = PBXGroup;
 			children = (
 				C6E8491416655C4C00BB94F1 /* ToBeImplemented */,
 				C6E8491216655C2600BB94F1 /* c */,
 			);
-			name = passive;
+			name = inactive;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

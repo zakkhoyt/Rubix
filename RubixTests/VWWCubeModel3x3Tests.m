@@ -44,6 +44,20 @@
     [self.cube printCube];
 }
 
+-(void)testSyntax{
+    NSLog(@"%s", __FUNCTION__);
+    NSMutableArray* a = [@[
+                         @[@"A-1", @"A-2"],
+                         @[@"B-1", @"B-2"]]
+                         mutableCopy];
+    
+    NSLog(@"indexing into array: %@", a[0][0]);
+    NSLog(@"indexing into array: %@", a[0][1]);
+    NSLog(@"indexing into array: %@", a[1][0]);
+    NSLog(@"indexing into array: %@", a[1][0]);
+    
+    
+}
 
 
 @end
